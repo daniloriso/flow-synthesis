@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library>
+
+	<Element Name    = "REG">
+		<attr File   = "./Ressources/SIGNED/REG_SIGNED.xml" />
+	</Element>
+
+	<Element Name    = "MUX">
+		<attr File   = "./Ressources/SIGNED/MUX_SIGNED.xml" />
+	</Element>
+
+
+	<Element Name    = "ACS">
+    	<attr File   = "./Ressources/VITERBI/ACS_VITERBI.xml" />
+    </Element>
+
+	<Element Name    = "BM_00">
+    	<attr File   = "./Ressources/VITERBI/BM_VITERBI_00.xml" />
+    </Element>
+
+	<Element Name    = "BM_01">
+    	<attr File   = "./Ressources/VITERBI/BM_VITERBI_01.xml" />
+    </Element>
+
+	<Element Name    = "BM_10">
+    	<attr File   = "./Ressources/VITERBI/BM_VITERBI_10.xml" />
+    </Element>
+
+	<Element Name    = "BM_11">
+    	<attr File   = "./Ressources/VITERBI/BM_VITERBI_11.xml" />
+    </Element>
+
+    <Element Name    = "Z-1">
+    	<attr File   = "./Ressources/Z_Delay.xml" />
+    </Element>
+
+    <Element Name    = "EXTRACT_MSB">
+    	<attr File   = "./Ressources/VITERBI/EXTRACT_MSB_VITERBI.xml" />
+    </Element>
+
+    <Element Name    = "EXTRACT_PM">
+    	<attr File   = "./Ressources/VITERBI/EXTRACT_PM_VITERBI.xml" />
+    </Element>
+
+
+</Library>

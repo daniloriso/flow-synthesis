@@ -1,0 +1,16 @@
+<Ressource>
+	<attr opr_name	  = "MAC" />
+	<attr Type		  = "component" />
+	<attr code		  = "MAC_INT_16" />
+	<attr Delay		  = "1" />     <!-- clock cycle -->
+	<attr Latency     = "5.34" />  <!-- ns time -->
+	<attr Area		  = "2161" />  <!-- gates -->
+	<attr Pipeline	  = "0" />
+	<attr Commutativity = "0" />
+	<attr Consumption	  = "161" />
+	<offsets>
+		<input	offset="0" />
+		<input	offset="0" />
+		<output	offset="0" />
+	</offsets>
+</Ressource>	

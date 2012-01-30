@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE parallelization_file SYSTEM "parallelization_file.dtd">
+<parallelization_file>
+<!-- Parallelization : Motif 3 gauche
+Old pattern             New pattern
+ v1    v2                w1  w2 w3  w4
+  \    /                  \  /   \  /
+   opr1  v3                s1     s2
+     \  /                   \    /
+     opr2  v4                 s3
+       \  /
+       opr3
+-->
+  <parallelization_motif3gauche>
+    <old_pattern>
+      <operator name="opr1" value="+"/>
+      <operator name="opr2" value="+"/>
+      <operator name="opr3" value="+"/>
+      <variable id="v1"/>
+      <variable id="v2"/>
+      <variable id="v3"/>
+      <variable id="v4"/>
+    </old_pattern>
+
+    <new_pattern>
+      <operator name="s1" value="+"/>
+      <operator name="s2" value="+"/>
+      <operator name="s3" value="+"/>
+      <variable id="w1" idref="v1"/>
+      <variable id="w2" idref="v2"/>
+      <variable id="w3" idref="v3"/>
+      <variable id="w4" idref="v4"/>
+    </new_pattern>
+  </parallelization_motif3gauche>
+
+  <parallelization_motif3gauche>
+    <old_pattern>
+      <operator name="opr1" value="+"/>
+      <operator name="opr2" value="-"/>
+      <operator name="opr3" value="+"/>
+      <variable id="v1"/>
+      <variable id="v2"/>
+      <variable id="v3"/>
+      <variable id="v4"/>
+    </old_pattern>
+
+    <new_pattern>
+      <operator name="s1" value="+"/>
+      <operator name="s2" value="-"/>
+      <operator name="s3" value="+"/>
+      <variable id="w1" idref="v1"/>
+      <variable id="w2" idref="v2"/>
+      <variable id="w3" idref="v4"/>
+      <variable id="w4" idref="v3"/>
+    </new_pattern>
+  </parallelization_motif3gauche>
+
+<!-- Parallelization : Motif 3 droite
+Old pattern             New pattern
+      v1    v2          w1  w2 w3  w4
+       \    /            \  /   \  /
+    v3  opr1              s1     s2
+     \  /                   \    /
+  v4  opr2                    s3
+   \   /
+    opr3
+-->
+  <parallelization_motif3droite>
+    <old_pattern>
+      <operator name="opr1" value="+"/>
+      <operator name="opr2" value="+"/>
+      <operator name="opr3" value="+"/>
+      <variable id="v4"/>
+      <variable id="v3"/>
+      <variable id="v2"/>
+      <variable id="v1"/>
+    </old_pattern>
+
+    <new_pattern>
+      <operator name="s1" value="+"/>
+      <operator name="s2" value="+"/>
+      <operator name="s3" value="+"/>
+      <variable id="w1" idref="v1"/>
+      <variable id="w2" idref="v2"/>
+      <variable id="w3" idref="v3"/>
+      <variable id="w4" idref="v4"/>
+    </new_pattern>
+  </parallelization_motif3droite>
+
+<!-- Parallelization : Motif 2 gauche
+Old pattern             New pattern
+ v1    v2                w1  w2 w3  w4
+  \    /                  \  /   \  /
+   opr1  v3                s1     s2
+     \  /                   \    /
+     opr2                     s3
+-->
+
+  <parallelization_motif2gauche>
+    <old_pattern>
+      <operator name="opr1" value="*"/>
+      <operator name="opr2" value="+"/>
+      <variable id="v1"/>
+      <variable id="v2"/>
+      <variable id="v3"/>
+    </old_pattern>
+
+    <new_pattern>
+      <operator name="s1" value="MAC"/>
+      <variable id="w1" idref="v1"/>
+      <variable id="w2" idref="v2"/>
+      <variable id="w3" idref="v3"/>
+    </new_pattern>
+  </parallelization_motif2gauche>
+
+<!-- Parallelization : Motif 2 droite
+Old pattern           New pattern
+    v1   v2            w1  w2 w3  w4
+     \   /              \  /   \  /
+  v3 opr1                s1     s2
+   \  /                   \    /
+   opr2                     s3
+-->
+
+  <parallelization_motif2droite>
+    <old_pattern>
+      <operator name="opr1" value="+"/>
+      <operator name="opr2" value="*"/>
+      <variable id="v1"/>
+      <variable id="v2"/>
+      <variable id="v3"/>
+    </old_pattern>
+
+    <new_pattern>
+      <operator name="s1" value="*"/>
+      <operator name="s2" value="*"/>
+      <operator name="s3" value="+"/>
+      <variable id="w1" idref="v3"/>
+      <variable id="w2" idref="v1"/>
+      <variable id="w3" idref="v3"/>
+      <variable id="w4" idref="v2"/>
+    </new_pattern>
+  </parallelization_motif2droite>
+</parallelization_file>

@@ -1,0 +1,4 @@
+$SIGNED_16b		$LIBRARY/Library_int16.xml
+$UNSIGNED_16b	$LIBRARY/Library_uint16.xml
+$SIGNED_32b		$LIBRARY/Library_int32.xml
+$UNSIGNED_32b	$LIBRARY/Library_uint32.xml

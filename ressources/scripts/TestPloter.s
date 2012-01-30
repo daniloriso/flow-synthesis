@@ -1,0 +1,7 @@
+cd($SAMPLES/prodmat/4x4)
+GCLoader(prodmat)
+hls_DelayInsertion()
+ASAP_ALAP()
+hls_AreaConstraintSchedule(prodmat.alloc)
+hls_ComputeDataLifeTime()
+hls_AnalyzeScheduling()

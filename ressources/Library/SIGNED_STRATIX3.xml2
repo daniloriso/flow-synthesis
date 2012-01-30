@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library>
+	
+	<Element Name    = "+,ADD">
+		<attr opr_name	  = "ADD" />
+		<attr Type		  = "component" />
+		<attr code		  = "ADD_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 4 8 12 16 20 24 28 32 64 128]" />
+		<attr Latency     = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 1.786 2.176 2.382 2.588 2.794 3 3.206 3.412 5.06 8.356]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "1" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+	
+	<Element Name    = "*,MUL">
+		<attr opr_name	  = "MUL" />
+		<attr Type		  = "component" />
+		<attr code		  = "MUL_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 14 38 80 138 212 302 408 530 2082 8258]" />
+		<attr Latency     = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 5.541 8.697 8.926 11.047 11.099 11.459 11.757 13.96 17.698 23.083]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "1" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "MAC">
+		<attr opr_name	  = "MAC" />
+		<attr Type		  = "component" />
+		<attr code		  = "MAC_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 18 46 92 154 232 326 436 562 2146 8322]" />
+		<attr Latency	  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 7.327 10.873 11.308 13.635 13.893 14.459 14.963 17.372 22.758 31.439]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "-,SUB">
+		<attr opr_name	  = "SUB" />
+		<attr Type		  = "component" />
+		<attr code		  = "SUB_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 4 8 12 16 20 24 28 32 64 128]" />
+		<attr Latency     = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 1.786 2.176 2.382 2.588 2.794 3 3.206 3.412 5.06 8.356]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+
+	<Element Name    = "SQR">
+		<attr opr_name	  = "SQR" />
+		<attr Type		  = "component" />
+		<attr code		  = "SQR_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 4 21 46 90 113 182 214 306 1121 4290]" />
+		<attr Latency	  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 1.331 6.565 6.688 9.066 8.944 9.356 9.616 11.94 15.761 21.229]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "ABS">
+		<attr opr_name	  = "ABS" />
+		<attr Type		  = "component" />
+		<attr code		  = "ABS_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 3 9 12 17 21 25 30 34 68 137]" />
+		<attr Latency	  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 0.764 3.195 3.216 3.242 3.628 3.834 4.04 4.247 5.895 9.19]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "MAX,max,Max">
+		<attr opr_name	  = "MAX" />
+		<attr Type		  = "component" />
+		<attr code		  = "MAX_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 8 16 24 32 40 48 56 64 128 256]" />
+		<attr Latency	  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 2.977 3.284 3.663 3.931 4.195 4.529 4.742 4.949 6.606 9.919]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "MIN,min,Min">
+		<attr opr_name	  = "MIN" />
+		<attr Type		  = "component" />
+		<attr code		  = "MIN_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 8 16 24 32 40 48 56 64 128 256]" />
+		<attr Latency	  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 2.977 3.284 3.663 3.931 4.195 4.529 4.742 4.949 6.606 9.919]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+    <Element Name    = "DIV2">
+		<attr opr_name	  = "DIV2" />
+		<attr Type		  = "component" />
+		<attr code		  = "DIV2_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 0 0 0 0 0 0 0 0 0 0]" />
+		<attr Latency     = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 0 0 0 0 0 0 0 0 0 0]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+    
+    <Element Name    = "DIV4">
+		<attr opr_name	  = "DIV4" />
+		<attr Type		  = "component" />
+		<attr code		  = "DIV4_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 0 0 0 0 0 0 0 0 0 0]" />
+		<attr Latency     = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 0 0 0 0 0 0 0 0 0 0]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+
+    <Element Name    = "DIV8">
+		<attr opr_name	  = "DIV8" />
+		<attr Type		  = "component" />
+		<attr code		  = "DIV8_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 0 0 0 0 0 0 0 0 0 0]" />
+		<attr Latency     = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 0 0 0 0 0 0 0 0 0 0]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+
+    <Element Name    = "DIV16">
+		<attr opr_name	  = "DIV16" />
+		<attr Type		  = "component" />
+		<attr code		  = "DIV16_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 0 0 0 0 0 0 0 0 0 0]" />
+		<attr Latency     = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 0 0 0 0 0 0 0 0 0 0]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+
+	<Element Name    = "MUX">
+		<attr opr_name	  = "MUX" />
+		<attr Type		  = "component" />
+		<attr code		  = "MUX_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[DSPLINE][0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 48 56 64 80 96 112 128][0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 48 56 64 80 96 112 128][0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 48 56 64 80 96 112 128][0 0 1 2 2 3 4 4 4 5 6 6 7 8 8 8 8 9 10 10 11 12 12 13 13 14 14 15.5 16 16 16 16 16 17 18 18 19 20 20 21 21 25 30 33 42 50 58 66]" />
+		<attr Latency     = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 0.764 0.764 0.764 0.764 0.764 0.764 0.764 0.764 0.764 0.764]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	= "true" />
+		<attr Commutativity     = "0" />
+		<attr Consumption	    = "161" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+    <Element Name    = "Z-1,REG">
+		<attr opr_name	  = "REG" />
+		<attr Type		  = "component" />
+		<attr code		  = "REG_SIGNED" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 4 8 12 16 20 24 28 32 64 128]" />
+		<attr Latency     = "[SPLINE][0 4 8 12 16 20 24 28 32 64 128][0 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4 0.4]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	  = "161" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+    
+</Library>

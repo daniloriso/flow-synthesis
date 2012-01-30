@@ -1,0 +1,16 @@
+<Ressource>
+	<attr opr_name	  = "DM4" />
+	<attr Type		  = "component" />
+	<attr code		  = "DEMUX4_FLOAT_32" />
+	<attr Delay		  = "0" />    <!-- clock cycle -->
+	<attr Latency     = "0.421" /> <!-- ns time -->
+	<attr Area		  = "74" />  <!-- gates -->
+	<attr Pipeline	  = "0" />
+	<attr Commutativity = "0" />
+	<attr Consumption	  = "161" />
+	<offsets>
+		<input	offset="0" />
+		<input	offset="0" />
+		<output	offset="0" />
+	</offsets>
+</Ressource>	

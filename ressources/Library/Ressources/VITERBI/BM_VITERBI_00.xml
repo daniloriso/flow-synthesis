@@ -1,0 +1,16 @@
+<Ressource>
+	<attr opr_name	  = "BM_00" />
+	<attr Type		  = "component" />
+	<attr code		  = "VIT_BM_00" />
+	<attr Delay		  = "1" />
+	<attr Area		  = "16" />
+	<attr Latency	  = "1" /> <!-- fake ns-->
+	<attr Pipeline	  = "0" />
+	<attr Commutativity = "0" />
+	<attr Consumption	  = "161" />
+	<offsets>
+		<input	offset="0" />
+		<input	offset="0" />
+		<output	offset="0" />
+	</offsets>
+</Ressource>	

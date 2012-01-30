@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library>
+	
+	<Element Name    = "REG">
+		<attr File   = "./Ressources/IEEE_754/REG_float32.xml" />
+	</Element>
+
+	<Element Name    = "MUX">
+		<attr File   = "./Ressources/IEEE_754/MUX_float32.xml" />
+	</Element>
+
+	<Element Name    = "ADD">
+		<attr File   = "./Ressources/IEEE_754/Add_float32.xml" />
+	</Element>
+
+	<Element Name    = "add">
+		<attr File   = "./Ressources/IEEE_754/Add_float32.xml" />
+	</Element>
+
+	<Element Name    = "+">
+		<attr File   = "./Ressources/IEEE_754/Add_float32.xml" />
+	</Element>
+
+	<Element Name    = "MUL">
+		<attr File   = "./Ressources/IEEE_754/Mul_float32.xml" />
+	</Element>
+
+	<Element Name    = "mul">
+		<attr File   = "./Ressources/IEEE_754/Mul_float32.xml" />
+	</Element>
+
+	<Element Name    = "*">
+		<attr File   = "./Ressources/IEEE_754/Mul_float32.xml" />
+	</Element>
+
+	<Element Name    = "SUB">
+		<attr File   = "./Ressources/IEEE_754/Sub_float32.xml" />
+	</Element>
+
+	<Element Name    = "sub">
+		<attr File   = "./Ressources/IEEE_754/Sub_float32.xml" />
+	</Element>
+
+	<Element Name    = "-">
+		<attr File   = "./Ressources/IEEE_754/Sub_float32.xml" />
+	</Element>
+
+	<Element Name    = "Z-1">
+		<attr File   = "./Ressources/Z_Delay.xml" />
+	</Element>
+
+	<Element Name    = "ABS">
+		<attr File   = "./Ressources/IEEE_754/Abs_float32.xml" />
+	</Element>
+
+	<Element Name    = "abs">
+		<attr File   = "./Ressources/IEEE_754/Abs_float32.xml" />
+	</Element>
+
+	<Element Name    = "SQR">
+		<attr File   = "./Ressources/IEEE_754/Sqr_float32.xml" />
+	</Element>
+
+	<Element Name    = "DIV2">
+		<attr File   = "./Ressources/IEEE_754/DIV2_float32.xml" />
+	</Element>
+
+	<Element Name    = "DIV4">
+		<attr File   = "./Ressources/IEEE_754/DIV4_float32.xml" />
+	</Element>
+
+	<Element Name    = "DIV8">
+		<attr File   = "./Ressources/IEEE_754/DIV8_float32.xml" />
+	</Element>
+
+	<Element Name    = "DIV16">
+		<attr File   = "./Ressources/IEEE_754/DIV16_float32.xml" />
+	</Element>
+
+	<Element Name    = "sqr">
+		<attr File   = "./Ressources/IEEE_754/Sqr_float32.xml" />
+	</Element>
+</Library>
+

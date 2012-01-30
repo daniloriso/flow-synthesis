@@ -1,0 +1,17 @@
+<Ressource>
+	<attr opr_name	  = "ABSUB" />
+	<attr Type		  = "component" />
+	<attr code		  = "ABSUB_SIGNED" />
+	<attr Delay		  = "1" />
+	<attr Latency	  = "1" /> <!-- fake ns-->
+	<attr Area		  = "5*n" />
+	<attr Pipeline	  = "0" />
+	<attr variable_bitwidth	  = "true" />
+	<attr Commutativity = "0" />
+	<attr Consumption	  = "161" />
+	<offsets>
+		<input	offset="0" />
+		<input	offset="0" />
+		<output	offset="0" />
+	</offsets>
+</Ressource>	

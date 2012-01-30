@@ -1,0 +1,16 @@
+<Ressource>
+	<attr opr_name	  = "MUL" />
+	<attr Type		  = "component" />
+	<attr code		  = "MUL_FLOAT_16" />
+	<attr Delay		  = "1" /> <!-- 17.347ns -->
+	<attr Latency	  = "1" /> <!-- fake ns-->
+	<attr Area		  = "59" />
+	<attr Pipeline	  = "0" />
+	<attr Commutativity = "1" />
+	<attr Consumption	  = "161" />
+	<offsets>
+		<input	offset="0" />
+		<input	offset="0" />
+		<input	offset="0" />
+	</offsets>
+</Ressource>	

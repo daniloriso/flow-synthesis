@@ -1,0 +1,16 @@
+<Ressource>
+	<attr opr_name	  = "ABSUB" />
+	<attr Type		  = "component" />
+	<attr code		  = "ABSUB_FLOAT_32" />
+	<attr Delay		  = "1" />      <!-- clock cycle -->
+	<attr Latency     = "23.818" />    <!-- ns time -->
+	<attr Area		  = "304" /> <!-- gates -->
+	<attr Pipeline	  = "0" />
+	<attr Commutativity = "0" />
+	<attr Consumption	  = "161" />
+	<offsets>
+		<input	offset="0" />
+		<input	offset="0" />
+		<output	offset="0" />
+	</offsets>
+</Ressource>	

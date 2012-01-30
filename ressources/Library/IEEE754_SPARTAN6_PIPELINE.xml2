@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library>
+	
+	<Element Name    = "+,ADD">
+		<attr opr_name	  = "ADD" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_ADD_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "12" />
+		<attr Latency	  = "17.344" />
+		<attr Area		  = "[SPLINE][0 32][0 452]" />
+		<attr variable_bitwidth	= "true" />
+		<attr Commutativity = "1" />
+		<attr Consumption   = "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+	
+	<Element Name    = "*,MUL">
+		<attr opr_name	  = "MUL" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_MUL_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "18" />
+		<attr Latency	  = "10.0" />
+		<attr Area		  = "[SPLINE][0 32][0 946]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity   = "1" />
+		<attr Consumption	  = "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "MAC">
+		<attr opr_name	  = "MAC" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_MAC_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "30" />
+		<attr Latency	  = "24.3" />
+		<attr Area		  = "[SPLINE][0 32][0 1399]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "-,SUB">
+		<attr opr_name	  = "SUB" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_SUB_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "12" />
+		<attr Latency	  = "17.283" />
+		<attr Area		  = "[SPLINE][0 32][0 452]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+
+	<Element Name    = "SQR">
+		<attr opr_name	  = "SQR" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_SQR_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "18" />
+		<attr Latency	  = "8.142" />
+		<attr Area		  = "[SPLINE][0 32][0 485]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "SQRT">
+		<attr opr_name	  = "SQR" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_SQR_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "28" />
+		<attr Latency	  = "8.142" />
+		<attr Area		  = "[SPLINE][0 32][0 485]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "ABS">
+		<attr opr_name	  = "ABS" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_ABS_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0" />
+		<attr Area		  = "[SPLINE][0 32][0 0]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "SP_2_FP,SP_TO_FP">
+		<attr opr_name	  = "SP_2_FP" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_SP2FP_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Area		  = "[SPLINE][0 32][0 0]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "FP_2_SP,FP_TO_SP">
+		<attr opr_name	  = "FP_2_SP" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_FP2SP_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0" />
+		<attr Area		  = "[SPLINE][0 32][0 0]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "MAX,max,Max">
+		<attr opr_name	  = "MAX" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_MAX_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "3" />
+		<attr Latency	  = "3.306" />
+		<attr Area		  = "[SPLINE][0 32][0 88]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "MIN,min,Min">
+		<attr opr_name	  = "MIN" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_MIN_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "3" />
+		<attr Latency	  = "3.306" />
+		<attr Area		  = "[SPLINE][0 32][0 88]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+    <Element Name    = "DIV2">
+		<attr opr_name	  = "DIV2" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_DIV2_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0.899" />
+		<attr Area		  = "[SPLINE][0 32][0 16]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+    
+    <Element Name    = "DIV4">
+		<attr opr_name	  = "DIV4" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_DIV4_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0.899" />
+		<attr Area		  = "[SPLINE][0 32][0 16]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+
+    <Element Name    = "DIV8">
+		<attr opr_name	  = "DIV8" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_DIV8_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0.899" />
+		<attr Area		  = "[SPLINE][0 32][0 16]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+
+    <Element Name    = "DIV16">
+		<attr opr_name	  = "DIV16" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_DIV16_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0.899" />
+		<attr Area		  = "[SPLINE][0 32][0 16]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+
+	<Element Name    = "if_then_else,CMOV">
+		<attr opr_name	  = "CMOV" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_CMOV_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "3" />
+		<attr Latency	  = "0.4" />
+		<attr Area		  = "[SPLINE][0 32][0 32]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "GT,GreaterThan">
+		<attr opr_name	  = "MORE" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_GT_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0.4" />
+		<attr Area		  = "[SPLINE][0 32][0 32]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "GTE,GreaterThanOrEqual">
+		<attr opr_name	  = "MORE" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_GTE_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0.4" />
+		<attr Area		  = "[SPLINE][0 32][0 32]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "LT,LessThan">
+		<attr opr_name	  = "LESS_THAN" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_LT_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0.4" />
+		<attr Area		  = "[SPLINE][0 32][0 32]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "LTE,LessThanOrEqual">
+		<attr opr_name	  = "LESS_THAN" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_LTE_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0.4" />
+		<attr Area		  = "[SPLINE][0 32][0 32]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "EQ,Equal">
+		<attr opr_name	  = "EQUAL" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_EQ_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0.4" />
+		<attr Area		  = "[SPLINE][0 32][0 32]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "NEQ,NotEqual">
+		<attr opr_name	  = "NOT_EQUAL" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_NEQ_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0.4" />
+		<attr Area		  = "[SPLINE][0 32][0 32]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+	<Element Name    = "/,DIVIDE">
+		<attr opr_name	  = "DIVIDE" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_DIV_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "28" />
+		<attr Latency	  = "0.4" />
+		<attr Area		  = "[SPLINE][0 32][0 32]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+
+	<Element Name    = "MUX">
+		<attr opr_name	  = "MUX" />
+		<attr Type		  = "component" />
+		<attr code		  = "IEEE754_MUX_32b_PIPELINE" />
+		<attr Delay		  = "1" />
+		<attr Pipeline	  = "2" />
+		<attr Latency	  = "0.4" />
+		<attr Area		  = "[SPLINE][0 32][0 32]" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+	</Element>
+
+    <Element Name    = "Z-1,REG">
+		<attr opr_name	  = "REG" />
+		<attr Type		  = "component" />
+		<attr code		  = "REG_FLOAT_32" />
+		<attr Delay		  = "1"   />
+		<attr Latency	  = "0.4" />
+		<attr Area		  = "[SPLINE][0 32][0 32]"  />
+		<attr Pipeline	  = "0"   />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	= "0" />
+		<offsets>
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+    
+</Library>

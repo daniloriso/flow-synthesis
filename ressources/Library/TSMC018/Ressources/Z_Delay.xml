@@ -1,0 +1,14 @@
+<Ressource>
+    <attr opr_name      = "Z-1" />
+    <attr Type          = "virtual" />
+    <attr code          = "Z-1" />
+    <attr Delay         = "0" />
+    <attr Area          = "0" />
+    <attr Pipeline      = "0" />
+    <attr Commutativity = "0" />
+    <attr Consumption   = "0" />
+    <offsets>
+    	<input  offset="0" />
+    	<output offset="0" />
+   	</offsets>
+</Ressource>

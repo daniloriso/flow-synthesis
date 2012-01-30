@@ -1,0 +1,125 @@
+latency {
+	80
+}
+
+alloc {
+	max		15
+	+		44
+	*		74
+	min		15
+	-		39
+	rshift	24
+}
+
+ports {
+	Y(1,?)	INPUT_1
+	Y(2,?)	INPUT_2
+	Y(3,?)	INPUT_3
+	Y(4,?)	INPUT_4
+	Y(5,?)	INPUT_5
+	Y(6,?)	INPUT_6
+	Y(7,?)	INPUT_7
+	Y(8,?)	INPUT_8
+
+	Cr(1,?)	INPUT_1
+	Cr(2,?)	INPUT_2
+	Cr(3,?)	INPUT_3
+	Cr(4,?)	INPUT_4
+	Cr(5,?)	INPUT_5
+	Cr(6,?)	INPUT_6
+	Cr(7,?)	INPUT_7
+	Cr(8,?)	INPUT_8
+
+	Cb(1,?)	INPUT_1
+	Cb(2,?)	INPUT_2
+	Cb(3,?)	INPUT_3
+	Cb(4,?)	INPUT_4
+	Cb(5,?)	INPUT_5
+	Cb(6,?)	INPUT_6
+	Cb(7,?)	INPUT_7
+	Cb(8,?)	INPUT_8
+
+	R(?,1)	OUTPUT_1
+	R(?,2)	OUTPUT_2
+	R(?,3)	OUTPUT_3
+	R(?,4)	OUTPUT_4
+	R(?,5)	OUTPUT_5
+	R(?,6)	OUTPUT_6
+	R(?,7)	OUTPUT_7
+	R(?,8)	OUTPUT_8
+
+	G(?,1)	OUTPUT_1
+	G(?,2)	OUTPUT_2
+	G(?,3)	OUTPUT_3
+	G(?,4)	OUTPUT_4
+	G(?,5)	OUTPUT_5
+	G(?,6)	OUTPUT_6
+	G(?,7)	OUTPUT_7
+	G(?,8)	OUTPUT_8
+
+	B(?,1)	OUTPUT_1
+	B(?,2)	OUTPUT_2
+	B(?,3)	OUTPUT_3
+	B(?,4)	OUTPUT_4
+	B(?,5)	OUTPUT_5
+	B(?,6)	OUTPUT_6
+	B(?,7)	OUTPUT_7
+	B(?,8)	OUTPUT_8
+}
+
+timings {
+	Y(1,?)		0
+	Y(2,?)		4
+	Y(3,?)		8
+	Y(4,?)		12
+	Y(5,?)		16
+	Y(6,?)		20
+	Y(7,?)		24
+	Y(8,?)		28
+
+	Cr(1,?)		1
+	Cr(2,?)		5
+	Cr(3,?)		9
+	Cr(4,?)		13
+	Cr(5,?)		17
+	Cr(6,?)		21
+	Cr(7,?)		25
+	Cr(8,?)		29
+
+	Cb(1,?)		2
+	Cb(2,?)		6
+	Cb(3,?)		10
+	Cb(4,?)		14
+	Cb(5,?)		18
+	Cb(6,?)		22
+	Cb(7,?)		26
+	Cb(8,?)		30
+
+
+	R(1,?)		50
+	R(2,?)		54
+	R(3,?)		58
+	R(4,?)		62
+	R(5,?)		66
+	R(6,?)		70
+	R(7,?)		74
+	R(8,?)		78
+
+	G(1,?)		51
+	G(2,?)		55
+	G(3,?)		59
+	G(4,?)		63
+	G(5,?)		67
+	G(6,?)		71
+	G(7,?)		75
+	G(8,?)		79
+
+	B(1,?)		52
+	B(2,?)		56
+	B(3,?)		60
+	B(4,?)		64
+	B(5,?)		68
+	B(6,?)		72
+	B(7,?)		76
+	B(8,?)		80
+}

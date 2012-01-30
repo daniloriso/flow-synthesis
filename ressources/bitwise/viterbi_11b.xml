@@ -1,0 +1,67 @@
+<!-- 
+-
+- Defintion style :
+-
+-	FUNCTION_NAME
+-	VMin_Expression
+-	VMax_Expression
+-
+-->
+
+<functions>
+
+<rule>
+	<name>REG</name>
+	<minEq>Min1</minEq>
+	<maxEq>Max1</maxEq>
+</rule>
+
+<rule>
+	<name>Z-1</name>
+	<minEq>Min1</minEq>
+	<maxEq>Max1</maxEq>
+</rule>
+
+<rule>
+	<name>ACS</name>
+	<minEq>0</minEq>
+	<maxEq>2047</maxEq>
+</rule>
+
+<rule>
+	<name>BM_00</name>
+	<minEq>0</minEq>
+	<maxEq>31</maxEq>
+</rule>
+
+<rule>
+	<name>BM_01</name>
+	<minEq>0</minEq>
+	<maxEq>31</maxEq>
+</rule>
+
+<rule>
+	<name>BM_10</name>
+	<minEq>0</minEq>
+	<maxEq>31</maxEq>
+</rule>
+
+<rule>
+	<name>BM_11</name>
+	<minEq>0</minEq>
+	<maxEq>31</maxEq>
+</rule>
+
+<rule>
+	<name>EXTRACT_MSB</name>
+	<minEq>0</minEq>
+	<maxEq>1</maxEq>
+</rule>
+
+<rule>
+	<name>EXTRACT_PM</name>
+	<minEq>0</minEq>
+	<maxEq>1023</maxEq>
+</rule>
+
+</functions>

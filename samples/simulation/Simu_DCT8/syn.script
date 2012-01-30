@@ -1,0 +1,26 @@
+#setenv(HARDWARE_LIB = $SIGNED_CYCLONE3)
+setenv(DESIGN_LATENCY = 80)
+setenv(CST_ALLOCATION = constraints\force_allocation.alloc)
+setenv(CST_DATE = constraints\IODate)
+setenv(CST_PORTS = constraints\IOPort)
+
+setenv(HARDWARE_LIB = $LIBRARY/SIGNED_CYCLONE3.xml2)
+
+MatlabAnalyser(Model.m)
+
+hls_LoadIOPorts($CST_PORTS)
+hls_LoadInputDate($CST_DATE)
+hls_OptimizeGraph($RESSOURCES/arithmetic/reduce_computation.xml);
+dyn_SetConstantBitwise(32,1)
+
+hls_LoadLibrary($HARDWARE_LIB);
+hls_FactorizeIdenticalComputations($HARDWARE_LIB);
+hls_ComputeASAP()
+hls_ComputeALAP($DESIGN_LATENCY)
+hls_AllocationForceDirected($CST_ALLOCATION)
+
+hls_ComplexSchedule($CST_ALLOCATION, $HARDWARE_LIB, REGISTER, NORMAL_EFFORT)
+hls_ComputeDataLifeTime()
+hls_AnalyzeScheduling()
+
+hls_GenDynamicMooreArchitecture2(design_normal.vhd, $HARDWARE_LIB)

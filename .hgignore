@@ -1,0 +1,7 @@
+syntax: glob
+
+build/*
+nbproject/*
+samples/hardware/results/*
+manifest.mf
+nbbuild.xml

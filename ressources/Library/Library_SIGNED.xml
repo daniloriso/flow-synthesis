@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library>_SIGNED
+	
+	<Element Name    = "REG">
+		<attr File   = "./Ressources/SIGNED/REG_SIGNED.xml" />
+	</Element>
+
+	<Element Name    = "MUX">
+		<attr File   = "./Ressources/SIGNED/MUX_SIGNED.xml" />
+	</Element>
+
+	<Element Name    = "ADD">
+		<attr File   = "./Ressources/SIGNED/Add_SIGNED.xml" />
+	</Element>
+
+	<Element Name    = "add">
+		<attr File   = "./Ressources/SIGNED/Add_SIGNED.xml" />
+	</Element>
+
+	<Element Name    = "+">
+    	<attr File   = "./Ressources/SIGNED/Add_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "MUL">
+    	<attr File   = "./Ressources/SIGNED/Mul_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "mul">
+    	<attr File   = "./Ressources/SIGNED/Mul_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "*">
+    	<attr File   = "./Ressources/SIGNED/Mul_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "MAC">
+    	<attr File   = "./Ressources/SIGNED/MAC_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "SUB">
+    	<attr File   = "./Ressources/SIGNED/Sub_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "sub">
+    	<attr File   = "./Ressources/SIGNED/Sub_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "-">
+    	<attr File   = "./Ressources/SIGNED/Sub_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "ABS">
+    	<attr File   = "./Ressources/SIGNED/Abs_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "SQR">
+    	<attr File   = "./Ressources/SIGNED/Sqr_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "DIV2N">
+    	<attr File   = "./Ressources/SIGNED/DIV2N_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "DIV2">
+    	<attr File   = "./Ressources/SIGNED/DIV2_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "DIV4">
+    	<attr File   = "./Ressources/SIGNED/DIV4_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "DIV8">
+    	<attr File   = "./Ressources/SIGNED/DIV8_SIGNED.xml" />
+    </Element>
+
+	<Element Name    = "/">
+    	<attr File   = "./Ressources/SIGNED/DIVN_SIGNED.xml" />
+    </Element>
+
+    <Element Name    = "Z-1">
+    	<attr File   = "./Ressources/Z_Delay.xml" />
+    </Element>
+
+
+</Library>

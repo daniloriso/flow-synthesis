@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library>
+	
+	<Element Name    = "ADD">
+		<attr File   = "./Ressources/INT_16/Add_Int_16.xml" />
+	</Element>
+
+	<Element Name    = "+">
+    	<attr File   = "./Ressources/INT_16/Add_Int_16.xml" />
+    </Element>
+
+	<Element Name    = "MUL">
+    	<attr File   = "./Ressources/INT_16/Mul_Int_16.xml" />
+    </Element>
+
+	<Element Name    = "*">
+    	<attr File   = "./Ressources/INT_16/Mul_Int_16.xml" />
+    </Element>
+
+	<Element Name    = "MAC">
+    	<attr File   = "./Ressources/INT_16/MAC_Int_16.xml" />
+    </Element>
+
+	<Element Name    = "SUB">
+    	<attr File   = "./Ressources/INT_16/Sub_Int_16.xml" />
+    </Element>
+
+	<Element Name    = "-">
+    	<attr File   = "./Ressources/INT_16/Sub_Int_16.xml" />
+    </Element>
+
+	<Element Name    = "ABS">
+    	<attr File   = "./Ressources/INT_16/Abs_Int_16.xml" />
+    </Element>
+
+	<Element Name    = "SQR">
+    	<attr File   = "./Ressources/INT_16/Sqr_Int_16.xml" />
+    </Element>
+
+    <Element Name    = "Z-1">
+    	<attr File   = "./Ressources/Z_Delay.xml" />
+    </Element>
+
+
+</Library>

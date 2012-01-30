@@ -1,0 +1,52 @@
+<!ELEMENT optimization_file (optimizations, arithmetic_computation)>
+<!ELEMENT optimizations ((optimization)*)>
+<!ELEMENT optimization (old_node, new_node)>
+<!ELEMENT arithmetic_computation ((computation)*)>
+<!ELEMENT computation (old_node, new_node)>
+
+
+<!-- All elements above refer to the old node DTD -->
+<!ELEMENT old_node (inputs, (conditions)?)>
+<!ATTLIST old_node name CDATA #REQUIRED>
+
+<!ELEMENT inputs (variable|constant)+>
+<!ATTLIST inputs commutative (true|false) "false">
+
+<!ELEMENT variable EMPTY>
+<!ATTLIST variable id CDATA #IMPLIED>
+<!ATTLIST variable idref CDATA #IMPLIED>
+
+<!ELEMENT constant EMPTY>
+<!ATTLIST constant id CDATA #IMPLIED>
+<!ATTLIST constant value CDATA #IMPLIED>
+
+<!ELEMENT conditions (predicat)+>
+
+<!ELEMENT predicat EMPTY>
+<!ATTLIST predicat name (none|estMultiple|estOppose|estEgal|estInferieur|estSuperieur|estPositif|estPuissance) "none">
+<!ATTLIST predicat id CDATA #IMPLIED>
+<!ATTLIST predicat idref1 CDATA #IMPLIED>
+<!ATTLIST predicat idref2 CDATA #IMPLIED>
+<!ATTLIST predicat value1 CDATA #IMPLIED>
+<!ATTLIST predicat value2 CDATA #IMPLIED>
+<!ATTLIST predicat not (true|false) "false">
+
+
+<!-- All elements above refer to the new node DTD -->
+<!ELEMENT new_node ((node_operator|node_constant|node_variable)*)>
+<!ATTLIST new_node name CDATA #IMPLIED>
+
+<!ELEMENT node_operator (node_operator|node_constant|node_variable)+>
+<!ATTLIST node_operator name CDATA #REQUIRED>
+<!ATTLIST node_operator nb_out CDATA "1">
+
+<!ELEMENT node_constant EMPTY>
+<!ATTLIST node_constant value CDATA #IMPLIED>
+<!ATTLIST node_constant id CDATA #IMPLIED>
+<!ATTLIST node_constant idref CDATA #IMPLIED>
+<!ATTLIST node_constant opposite (true|false) "false">
+<!ATTLIST node_constant eval CDATA #IMPLIED>
+<!ATTLIST node_constant predref CDATA #IMPLIED>
+
+<!ELEMENT node_variable EMPTY>
+<!ATTLIST node_variable idref CDATA #REQUIRED>

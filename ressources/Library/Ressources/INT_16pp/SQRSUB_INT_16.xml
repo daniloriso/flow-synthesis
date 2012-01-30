@@ -1,0 +1,16 @@
+<Ressource>
+	<attr opr_name	  = "SQR_DIFF" />
+	<attr Type		  = "component" />
+	<attr code		  = "SQRSUB_INT_16pp" />
+	<attr Delay		  = "1" />
+	<attr Latency	  = "1" /> <!-- fake ns-->
+	<attr Area		  = "16" />
+	<attr Pipeline	  = "1" />
+	<attr Commutativity = "0" />
+	<attr Consumption	  = "161" />
+	<offsets>
+		<input	offset="0" />
+		<input	offset="0" />
+		<output	offset="0" />
+	</offsets>
+</Ressource>	

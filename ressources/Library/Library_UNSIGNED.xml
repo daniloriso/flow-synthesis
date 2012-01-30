@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library>_UNSIGNED
+	
+	<Element Name    = "REG">
+		<attr File   = "./Ressources/UNSIGNED/REG_UNSIGNED.xml" />
+	</Element>
+
+	<Element Name    = "MUX">
+		<attr File   = "./Ressources/UNSIGNED/MUX_UNSIGNED.xml" />
+	</Element>
+
+	<Element Name    = "ADD">
+		<attr File   = "./Ressources/UNSIGNED/Add_UNSIGNED.xml" />
+	</Element>
+
+	<Element Name    = "add">
+		<attr File   = "./Ressources/UNSIGNED/Add_UNSIGNED.xml" />
+	</Element>
+
+	<Element Name    = "+">
+    	<attr File   = "./Ressources/UNSIGNED/Add_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "MUL">
+    	<attr File   = "./Ressources/UNSIGNED/Mul_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "mul">
+    	<attr File   = "./Ressources/UNSIGNED/Mul_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "*">
+    	<attr File   = "./Ressources/UNSIGNED/Mul_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "MAC">
+    	<attr File   = "./Ressources/UNSIGNED/MAC_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "SUB">
+    	<attr File   = "./Ressources/UNSIGNED/Sub_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "sub">
+    	<attr File   = "./Ressources/UNSIGNED/Sub_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "-">
+    	<attr File   = "./Ressources/UNSIGNED/Sub_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "ABS">
+    	<attr File   = "./Ressources/UNSIGNED/Abs_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "SQR">
+    	<attr File   = "./Ressources/UNSIGNED/Sqr_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "DIV2N">
+    	<attr File   = "./Ressources/UNSIGNED/DIV2N_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "DIV2">
+    	<attr File   = "./Ressources/UNSIGNED/DIV2_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "DIV4">
+    	<attr File   = "./Ressources/UNSIGNED/DIV4_UNSIGNED.xml" />
+    </Element>
+
+	<Element Name    = "DIV8">
+    	<attr File   = "./Ressources/UNSIGNED/DIV8_UNSIGNED.xml" />
+    </Element>
+
+    <Element Name    = "Z-1">
+    	<attr File   = "./Ressources/Z_Delay.xml" />
+    </Element>
+
+
+</Library>

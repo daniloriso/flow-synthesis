@@ -1,0 +1,17 @@
+<!-- linearization_file can contain linearization of 3-high or 2-high pattern  -->
+<!ELEMENT linearization_file ((linearization_motif3gauche)*,(linearization_motif3droite)*,(linearization_motif2gauche)*,(linearization_motif2droite)*)+>
+<!ELEMENT linearization_motif3gauche (old_pattern, new_pattern)>
+<!ELEMENT linearization_motif3droite (old_pattern, new_pattern)>
+<!ELEMENT linearization_motif2gauche (old_pattern, new_pattern)>
+<!ELEMENT linearization_motif2droite (old_pattern, new_pattern)>
+<!ELEMENT old_pattern ((operator)+,(variable)+)>
+<!ELEMENT new_pattern ((operator)+,(variable)+)>
+<!ELEMENT operator EMPTY>
+<!ELEMENT variable EMPTY>
+
+<!ATTLIST operator 
+	  name CDATA #REQUIRED
+	  value CDATA #REQUIRED>
+<!ATTLIST variable 
+	  id CDATA #REQUIRED
+	  idref CDATA #IMPLIED>

@@ -1,0 +1,17 @@
+<!-- parallelization_file can contain parallelization of 3-high or 2-high pattern  -->
+<!ELEMENT parallelization_file ((parallelization_motif3gauche)*,(parallelization_motif3droite)*,(parallelization_motif2gauche)*,(parallelization_motif2droite)*)+>
+<!ELEMENT parallelization_motif3gauche (old_pattern, new_pattern)>
+<!ELEMENT parallelization_motif3droite (old_pattern, new_pattern)>
+<!ELEMENT parallelization_motif2gauche (old_pattern, new_pattern)>
+<!ELEMENT parallelization_motif2droite (old_pattern, new_pattern)>
+<!ELEMENT old_pattern ((operator)+,(variable)+)>
+<!ELEMENT new_pattern ((operator)+,(variable)+)>
+<!ELEMENT operator EMPTY>
+<!ELEMENT variable EMPTY>
+
+<!ATTLIST operator 
+	  name CDATA #REQUIRED
+	  value CDATA #REQUIRED>
+<!ATTLIST variable 
+	  id CDATA #REQUIRED
+	  idref CDATA #IMPLIED>

@@ -1,0 +1,17 @@
+<Ressource>
+	<attr opr_name	  = "MUL" />
+	<attr Type		  = "component" />
+	<attr code		  = "MUL_UNSIGNED" />
+	<attr Delay		  = "1" /> <!-- 6.691ns-->
+	<attr Latency	  = "1" /> <!-- fake ns-->
+	<attr Area		  = "n*n" />
+	<attr Pipeline	  = "0" />
+	<attr variable_bitwidth	  = "true" />
+	<attr Commutativity = "1" />
+	<attr Consumption	  = "161" />
+	<offsets>
+		<input	offset="0" />
+		<input	offset="0" />
+		<output	offset="0" />
+	</offsets>
+</Ressource>	

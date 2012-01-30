@@ -1,0 +1,16 @@
+<Ressource>
+    <attr opr_name      = "ABS" />
+    <attr type          = "component" />
+    <attr code          = "ABS_FLOAT_16" />
+    <attr delay         = "1" />
+	<attr Latency	  = "1" /> <!-- fake ns-->
+    <attr area          = "8" />
+    <attr pipeline      = "0" />
+    <attr commutativity = "0" />
+    <attr consumption   = "2" />
+    <offsets>
+    	<input  offset="0" />
+    	<input  offset="0" />
+    	<output offset="0" />
+   	</offsets>
+</Ressource>

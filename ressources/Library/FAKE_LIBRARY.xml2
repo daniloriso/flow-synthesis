@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library>
+	
+	<Element Name    = "+,ADD">
+		<attr opr_name	  = "ADD" />
+		<attr Type		  = "component" />
+		<attr code		  = "ADD_FLOAT_32" />
+		<attr Delay		  = "1" />
+		<attr Latency	  = "0.25*n" />
+		<attr Area		  = "n" />
+		<attr Pipeline	  = "2" />
+		<attr variable_bitwidth	= "true" />
+		<attr Commutativity = "1" />
+		<attr Consumption   = "0" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
+	
+	<Element Name    = "*,MUL">
+		<attr opr_name	  = "MUL" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "MUL_FLOAT_32" />
+
+		<attr Delay		  = "1" />
+
+		<attr Latency	  = "n/2" />
+
+		<attr Area		  = "n*n" />
+
+		<attr Pipeline	  = "4" />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity   = "1" />
+
+		<attr Consumption	  = "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+	</Element>
+
+	<Element Name    = "MAC">
+		<attr opr_name	  = "MAC" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "MAC_FLOAT_32" />
+
+		<attr Delay		  = "1" />
+
+		<attr Latency	  = "n/2+0.25*n" />
+
+		<attr Area		  = "n*n+n" />
+
+		<attr Pipeline	  = "0" />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity = "0" />
+
+		<attr Consumption	= "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<input	offset="0" />
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+	</Element>
+
+	<Element Name    = "-,SUB">
+		<attr opr_name	  = "SUB" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "SUB_FLOAT_32" />
+
+		<attr Delay		  = "1" />
+
+		<attr Latency	  = "0.25*n" />
+
+		<attr Area		  = "n" />
+
+		<attr Pipeline	  = "0" />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity = "0" />
+
+		<attr Consumption	= "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+
+    </Element>
+
+	<Element Name    = "SQR">
+		<attr opr_name	  = "SQR" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "SQR_FLOAT_32" />
+
+		<attr Delay		  = "1" />
+
+		<attr Latency	  = "n/2" />
+
+		<attr Area		  = "n*n" />
+
+		<attr Pipeline	  = "0" />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity = "0" />
+
+		<attr Consumption	= "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+	</Element>
+
+	<Element Name    = "ABS">
+		<attr opr_name	  = "ABS" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "ABS_FLOAT_32" />
+
+		<attr Delay		  = "0" />
+
+		<attr Latency	  = "0" />
+
+		<attr Area		  = "0" />
+
+		<attr Pipeline	  = "0" />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity = "0" />
+
+		<attr Consumption	= "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+	</Element>
+
+	<Element Name    = "MAX,max,Max">
+		<attr opr_name	  = "MAX" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "MAX_SIGNED" />
+
+		<attr Delay		  = "1" />
+
+		<attr Latency	  = "3.306" />
+
+		<attr Area		  = "88" />
+
+		<attr Pipeline	  = "0" />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity = "1" />
+
+		<attr Consumption	= "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+	</Element>
+
+	<Element Name    = "MIN,min,Min">
+		<attr opr_name	  = "MIN" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "MIN_SIGNED" />
+
+		<attr Delay		  = "1" />
+
+		<attr Latency	  = "3.306" />
+
+		<attr Area		  = "88" />
+
+		<attr Pipeline	  = "0" />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity = "1" />
+
+		<attr Consumption	= "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+	</Element>
+
+    <Element Name    = "DIV2">
+		<attr opr_name	  = "DIV2" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "DIV2_FLOAT_32" />
+
+		<attr Delay		  = "1" />
+
+		<attr Latency	  = "0.899" />
+
+		<attr Area		  = "16" />
+
+		<attr Pipeline	  = "0" />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity = "0" />
+
+		<attr Consumption	= "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+    </Element>
+    
+    <Element Name    = "DIV4">
+		<attr opr_name	  = "DIV4" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "DIV4_FLOAT_32" />
+
+		<attr Delay		  = "1" />
+
+		<attr Latency	  = "0.899" />
+
+		<attr Area		  = "16" />
+
+		<attr Pipeline	  = "0" />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity = "0" />
+
+		<attr Consumption	= "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+    </Element>
+
+    <Element Name    = "DIV8">
+		<attr opr_name	  = "DIV8" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "DIV8_FLOAT_32" />
+
+		<attr Delay		  = "1" />
+
+		<attr Latency	  = "0.899" />
+
+		<attr Area		  = "16" />
+
+		<attr Pipeline	  = "0" />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity = "0" />
+
+		<attr Consumption	= "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+    </Element>
+
+    <Element Name    = "DIV16">
+		<attr opr_name	  = "DIV16" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "DIV16_FLOAT_32" />
+
+		<attr Delay		  = "1" />
+
+		<attr Latency	  = "0.899" />
+
+		<attr Area		  = "16" />
+
+		<attr Pipeline	  = "0" />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity = "0" />
+
+		<attr Consumption	= "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+    </Element>
+
+	<Element Name    = "MUX">
+		<attr opr_name	  = "MUX" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "MUX_FLOAT_32" />
+
+		<attr Delay		  = "1" />
+
+		<attr Latency	  = "0.4" />
+
+		<attr Area		  = "32" />
+
+		<attr Pipeline	  = "0" />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity = "0" />
+
+		<attr Consumption	= "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+	</Element>
+
+    <Element Name    = "Z-1">
+		<attr opr_name	  = "REG" />
+
+		<attr Type		  = "component" />
+
+		<attr code		  = "REG_FLOAT_32" />
+
+		<attr Delay		  = "1"   />
+
+		<attr Latency	  = "0.4" />
+
+		<attr Area		  = "32"  />
+
+		<attr Pipeline	  = "0"   />
+
+		<attr variable_bitwidth	  = "true" />
+
+		<attr Commutativity = "0" />
+
+		<attr Consumption	= "0" />
+
+		<offsets>
+
+			<input	offset="0" />
+
+			<output	offset="0" />
+
+		</offsets>
+
+    </Element>
+    
+</Library>

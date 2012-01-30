@@ -1,0 +1,97 @@
+#
+# default.style    10 fev. 2005
+#
+# Version:
+#    1.0 Ca marche bien, un point c'est tout,
+#
+#
+# Ce fichier de style developpé pour le projet ExtDFG permet dans
+# de visualiser des graphes de type GC avec des couleurs par défaut.
+#
+# Copyright (C) Bertrand LE GAL, 2005. All Rights Reserved.
+#               bertrand.legal@free.fr
+#
+# This style is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#
+# @author Bertrand LE GAL (bertrand.legal@free.fr)
+#
+#
+# 
+# Author : Bertrand LE GAL
+# E-Mail : bertrand.legal@free.fr
+#
+# Style file for the ExtDFG project.
+# 12/10/2005
+#
+#
+#
+# ! STYLE DEFINITION !
+# 1. Node Class
+# 2. Text Color
+# 3. Line Color
+# 4. Fill Color
+# 5. DRAWING FASHION
+# 6. Attribute(s)
+#
+# Autorized Class :
+#	CLASS_SPECIAL CLASS_VARIABLE CLASS_OPERATION ALL
+#
+# Autorized Colors :
+#	BLACK BLUE CYAN DARK_GRAY GRAY
+#	GREEN LIGHT_GRAY MAGENTA
+#	ORANGE PINK RED WHITE YELLOW
+#
+# Autorized Drawing Fashion :
+#	CIRCLE SQUARRE RECTANGLE DIAMOND
+#
+#
+
+
+CLASS_SPECIAL
+BLACK
+BLACK
+BLACK
+CIRCLE
+
+CLASS_OPERATION
+BLACK
+BLACK
+RED
+CIRCLE
+
+CLASS_VARIABLE
+BLACK
+BLACK
+GREEN
+CIRCLE
+TYPE INPUT
+
+CLASS_VARIABLE
+BLACK
+BLACK
+GREEN
+CIRCLE
+TYPE OUTPUT
+
+CLASS_VARIABLE
+BLACK
+BLACK
+YELLOW
+SQUARE
+TYPE CONSTANT
+
+CLASS_VARIABLE
+BLACK
+BLACK
+GREEN
+DIAMOND
+TYPE STRUCTURE
+
+CLASS_VARIABLE
+BLACK
+BLACK
+BLUE
+CIRCLE
+

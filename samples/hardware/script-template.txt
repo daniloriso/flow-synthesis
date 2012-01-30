@@ -1,0 +1,32 @@
+setenv(DESIGN_LATENCY = @{LATENCY})
+setenv(CST_ALLOCATION = @{ALLOC_FILENAME})
+setenv(CST_DATE = @{TIMINGS_FILENAME})
+setenv(CST_PORTS = @{PORTS_FILENAME})
+setenv(HARDWARE_LIB = $LIBRARY/SIGNED_CYCLONE3.xml2)
+
+MatlabAnalyser(models/@{NAME}.m)
+
+hls_LoadIOPorts($CST_PORTS)
+hls_LoadInputDate($CST_DATE)
+hls_OptimizeGraph($RESSOURCES/arithmetic/reduce_computation.xml)
+dyn_SetConstantBitwise(16,1)
+
+contracts-debug-toggle
+contracts-init
+contracts-tag
+contracts-prepare
+contracts-pull
+
+hls_LoadLibrary($HARDWARE_LIB)
+hls_FactorizeIdenticalComputations($HARDWARE_LIB)
+hls_ComputeASAP()
+hls_ComputeALAP($DESIGN_LATENCY)
+hls_AllocationForceDirected($CST_ALLOCATION)
+
+hls_ComplexSchedule($CST_ALLOCATION, $HARDWARE_LIB, REGISTER, NORMAL_EFFORT)
+hls_ComputeDataLifeTime()
+hls_AnalyzeScheduling()
+
+contracts-bind
+
+hls_GenDynamicMooreArchitecture2(results/@{NAME}.vhd, $HARDWARE_LIB)

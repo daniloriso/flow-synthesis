@@ -1,0 +1,16 @@
+<Ressource>
+	<attr opr_name	  = "ADD" />
+	<attr Type		  = "component" />
+	<attr code		  = "ADD_FLOAT_32" />
+	<attr Delay		  = "1" /> <!-- 24.295ns -->
+	<attr Latency	  = "1" /> <!-- fake ns-->
+	<attr Area		  = "441" />
+	<attr Pipeline	  = "0" />
+	<attr Commutativity = "1" />
+	<attr Consumption	  = "161" />
+	<offsets>
+		<input	offset="0" />
+		<input	offset="0" />
+		<output	offset="0" />
+	</offsets>
+</Ressource>	

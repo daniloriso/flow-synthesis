@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE linearization_file SYSTEM "linearization_file.dtd">
+<linearization_file>
+<!-- Linearization : Motif 3 gauche
+Old pattern           New pattern
+ v1   v2 v3  v4        w1 w2
+  \   /   \  /          \ /
+   opr1    opr2          s1 w3
+    \      /              \ /
+      opr3                 s2 w4
+                            \ /  
+                             s3
+-->
+
+
+  <linearization_motif3gauche>
+    <old_pattern>
+      <operator name="opr1" value="+"/>
+      <operator name="opr2" value="+"/>
+      <operator name="opr3" value="+"/>
+      <variable id="v1"/>
+      <variable id="v2"/>
+      <variable id="v3"/>
+      <variable id="v4"/>
+    </old_pattern>
+
+    <new_pattern>
+      <operator name="s1" value="+"/>
+      <operator name="s2" value="+"/>
+      <operator name="s3" value="+"/>
+      <variable id="w1" idref="v1"/>
+      <variable id="w2" idref="v2"/>
+      <variable id="w3" idref="v3"/>
+      <variable id="w4" idref="v4"/>
+    </new_pattern>
+  </linearization_motif3gauche>
+
+<linearization_motif3gauche>
+    <old_pattern>
+      <operator name="opr1" value="+"/>
+      <operator name="opr2" value="-"/>
+      <operator name="opr3" value="+"/>
+      <variable id="v1"/>
+      <variable id="v2"/>
+      <variable id="v3"/>
+      <variable id="v4"/>
+    </old_pattern>
+
+    <new_pattern>
+      <operator name="s1" value="+"/>
+      <operator name="s2" value="-"/>
+      <operator name="s3" value="+"/>
+      <variable id="w1" idref="v1"/>
+      <variable id="w2" idref="v2"/>
+      <variable id="w3" idref="v4"/>
+      <variable id="w4" idref="v3"/>
+    </new_pattern>
+  </linearization_motif3gauche>
+
+
+<!-- Linearization : Motif 3 droite
+Old pattern           New pattern
+ v1   v2 v3  v4             w1 w2
+  \   /   \  /               \ /
+   opr1    opr2            w3 s1
+    \      /                \ /
+      opr3               w4 s2
+                          \ /  
+                          s3
+-->
+  <linearization_motif3droite>
+    <old_pattern>
+      <operator name="opr1" value="+"/>
+      <operator name="opr2" value="+"/>
+      <operator name="opr3" value="+"/>
+      <variable id="v1"/>
+      <variable id="v2"/>
+      <variable id="v3"/>
+      <variable id="v4"/>
+    </old_pattern>
+
+    <new_pattern>
+      <operator name="s1" value="+"/>
+      <operator name="s2" value="+"/>
+      <operator name="s3" value="+"/>
+      <variable id="w1" idref="v1"/>
+      <variable id="w2" idref="v2"/>
+      <variable id="w3" idref="v3"/>
+      <variable id="w4" idref="v4"/>
+    </new_pattern>
+  </linearization_motif3droite>
+
+<!-- Linearization : Motif 2 gauche
+Old pattern           New pattern
+ v1   v2 v3  v4        w1 w2
+  \   /   \  /          \ /
+   opr1    opr2          s1 w3
+    \      /              \ /
+      opr3                 s2
+-->
+  <linearization_motif2gauche>
+    <old_pattern>
+      <operator name="opr1" value="*"/>
+      <operator name="opr2" value="*"/>
+      <operator name="opr3" value="+"/>
+      <variable id="v1"/>
+      <variable id="v2"/>
+      <variable id="v3"/>
+      <variable id="v4" idref="v2"/>
+    </old_pattern>
+
+    <new_pattern>
+      <operator name="s1" value="+"/>
+      <operator name="s2" value="*"/>
+      <variable id="w1" idref="v1"/>
+      <variable id="w2" idref="v3"/>
+      <variable id="w3" idref="v2"/>
+    </new_pattern>
+  </linearization_motif2gauche>
+
+<!-- Linearization : Motif 2 droite
+Old pattern           New pattern
+ v1   v2 v3  v4            w1 w2
+  \   /   \  /              \ /
+   opr1    opr2          w3  s1
+    \      /              \ /
+      opr3                 s2
+-->
+  <linearization_motif2droite>
+    <old_pattern>
+      <operator name="opr1" value="*"/>
+      <operator name="opr2" value="*"/>
+      <operator name="opr3" value="+"/>
+      <variable id="v1"/>
+      <variable id="v2"/>
+      <variable id="v3" idref="v1"/>
+      <variable id="v4"/>
+    </old_pattern>
+
+    <new_pattern>
+      <operator name="s1" value="+"/>
+      <operator name="s2" value="*"/>
+      <variable id="w1" idref="v2"/>
+      <variable id="w2" idref="v4"/>
+      <variable id="w3" idref="v1"/>
+    </new_pattern>
+  </linearization_motif2droite>
+</linearization_file>

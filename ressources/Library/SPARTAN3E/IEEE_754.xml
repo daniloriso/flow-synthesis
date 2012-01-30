@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Library>
+	
+	<Element Name    = "ABS">
+		<attr File   = "./Ressources/IEEE_754/ABS_IEEE-754.xml" />
+	</Element>
+
+	<Element Name    = "ABSUB">
+		<attr File   = "./Ressources/IEEE_754/ABSUB_IEEE-754.xml" />
+	</Element>
+
+	<Element Name    = "+">
+    	<attr File   = "./Ressources/IEEE_754/ADD_IEEE-754.xml" />
+    </Element>
+
+	<Element Name    = "ADD">
+    	<attr File   = "./Ressources/IEEE_754/ADD_IEEE-754.xml" />
+    </Element>
+
+	<Element Name    = "MUL">
+    	<attr File   = "./Ressources/IEEE_754/MUL_IEEE-754.xml" />
+    </Element>
+
+	<Element Name    = "*">
+    	<attr File   = "./Ressources/IEEE_754/MUL_IEEE-754.xml" />
+    </Element>
+
+	<Element Name    = "MIN">
+    	<attr File   = "./Ressources/IEEE_754/MIN_IEEE-754.xml" />
+    </Element>
+
+	<Element Name    = "MAX">
+    	<attr File   = "./Ressources/IEEE_754/MAX_IEEE-754.xml" />
+    </Element>
+
+	<Element Name    = "SUB">
+    	<attr File   = "./Ressources/IEEE_754/SUB_IEEE-754.xml" />
+    </Element>
+
+	<Element Name    = "-">
+    	<attr File   = "./Ressources/IEEE_754/SUB_IEEE-754.xml" />
+    </Element>
+
+	<Element Name    = "SQR">
+    	<attr File   = "./Ressources/IEEE_754/SQR_IEEE-754.xml" />
+    </Element>
+
+	<Element Name    = "MUX2">
+    	<attr File   = "./Ressources/IEEE_754/MUX2_IEEE-754.xml" />
+    </Element>
+
+	<Element Name    = "MUX4">
+    	<attr File   = "./Ressources/IEEE_754/MUX4_IEEE-754.xml" />
+    </Element>
+
+	<Element Name    = "DEMUX2">
+    	<attr File   = "./Ressources/IEEE_754/DEMUX2_IEEE-754.xml" />
+    </Element>
+
+	<Element Name    = "DEMUX4">
+    	<attr File   = "./Ressources/IEEE_754/DEMUX4_IEEE-754.xml" />
+    </Element>
+
+    <Element Name    = "Z-1">
+    	<attr File   = "./Ressources/Z_Delay.xml" />
+    </Element>
+
+
+</Library>

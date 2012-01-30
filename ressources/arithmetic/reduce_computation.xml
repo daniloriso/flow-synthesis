@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE optimization_file SYSTEM "optimization_file.dtd">
+<optimization_file>
+
+  <optimizations>
+
+	<!-- DESCRIPTION DE L'OPTIMISATION DE (A=1*B) => (B) -->
+	<optimization>
+	  <old_node name="*">
+		<inputs commutative="true">
+		  <variable id="e1"/>
+		  <constant value="1"/>
+		</inputs>
+	  </old_node>
+	  <new_node>
+		<node_variable idref="e1"/>
+	  </new_node>
+	</optimization>
+
+	<!-- DESCRIPTION DE L'OPTIMISATION DE (A=0*B) => (0) -->
+	<optimization>
+		<old_node name="*">
+			<inputs>
+				<variable id="e1"/>
+				<constant value="0"/>
+			</inputs>
+		</old_node>
+		<new_node>
+			<node_constant value="0"/>
+		</new_node>
+	</optimization>
+
+	<!-- DESCRIPTION DE L'OPTIMISATION DE (A=B/1) => (0)
+	<optimization>
+		<old_node name="/">
+			<inputs>
+				<variable id="e1"/>
+				<constant value="1"/>
+			</inputs>
+		</old_node>
+		<new_node>
+			<node_variable idref="e1"/>
+		</new_node>
+	</optimization> -->
+
+	<!-- DESCRIPTION DE L'OPTIMISATION DE (A=B*B) => (A=2*B) -->
+	<optimization>
+		<!-- Description de l'ancien motif -->
+		<old_node name="+">
+			<inputs commutative="true">
+				<variable id="e1"/>
+				<variable idref="e1"/>
+			</inputs>
+		</old_node>
+		<!-- Description du nouveau motif -->
+		<new_node>
+			<node_operator name="*">
+				<node_variable idref="e1"/>
+				<node_constant value="2"/>
+			</node_operator>
+	  	</new_node>
+	</optimization>
+
+	<!-- DESCRIPTION DE L'OPTIMISATION DE (A=B*2^n) => (A=B<<n)
+	<optimization>
+		<old_node name="*">
+			<inputs commutative="true">
+				<constant id="e1"/>
+				<variable id="e2"/>
+			</inputs>
+			<conditions>
+				<predicat id="p1" name="estPuissance" idref1="e1" value2="2"/>
+			</conditions>
+		</old_node>
+		<new_node>
+			<node_operator name="decG">
+				<node_variable idref="e2"/>
+				<node_constant predref="p1"/>
+			</node_operator>
+		</new_node>
+	</optimization> -->
+
+	<!-- DESCRIPTION DE L'OPTIMISATION DE (A=B+0) => (B) -->
+	<optimization>
+		<old_node name="+">
+			<inputs commutative="true">
+				<variable id="e1"/>
+				<constant value="0"/>
+			</inputs>
+		</old_node>
+		<new_node>
+			<node_variable idref="e1"/>
+		</new_node>
+	</optimization>
+
+
+	<!-- DESCRIPTION DE L'OPTIMISATION DE (A=B-B) => (B) -->
+	<optimization>
+		<old_node name="-">
+			<inputs>
+				<variable id="e1"/>
+				<variable idref="e1"/>
+			</inputs>
+		</old_node>
+		<new_node>
+			<node_constant value="0"/>
+		</new_node>
+	</optimization>
+
+	<optimization>
+		<old_node name="-">
+			<inputs>
+				<constant id="e1"/>
+				<constant id="e2"/>
+			</inputs>
+			<conditions>
+				<predicat name="estEgal" idref1="e1" idref2="e2"/>
+			</conditions>
+		</old_node>
+		<new_node>
+			<node_constant value="0"/>
+		</new_node>
+	</optimization>
+
+	<optimization>
+	  <old_node name="-">
+	<inputs>
+	  <variable id="e1"/>
+	  <variable idref="e1"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_constant value="0"/>
+	  </new_node>
+	</optimization>
+
+
+
+	<optimization>
+	  <old_node name="-">
+	<inputs>
+	  <variable id="e1"/>
+	  <constant value="0"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_variable idref="e1"/>
+	  </new_node>
+	</optimization>
+
+	<optimization>
+	  <old_node name="-">
+	<inputs>
+	  <constant value="0"/>
+	  <constant id="e1"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_constant idref="e1" opposite="true"/>
+	  </new_node>
+	</optimization>
+
+	<optimization>
+	  <old_node name="+">
+	<inputs>
+	  <constant id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	<conditions>
+	  <predicat name="estEgal" idref1="e1" idref2="e2"/>
+	</conditions>
+	  </old_node>
+	  <new_node>
+	<node_operator name="*">
+	  <node_constant value="2"/>
+	  <node_constant idref="e1"/>
+	</node_operator>
+	  </new_node>
+	</optimization>
+
+	<optimization>
+	  <old_node name="toto">
+	<inputs>
+	  <constant id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	<conditions>
+	  <predicat name="estInferieur" idref1="e1" idref2="e2"/>
+	</conditions>
+	  </old_node>
+	  <new_node>
+	<node_operator name="titi">
+	  <node_constant value="0"/>
+	</node_operator>
+	  </new_node>
+	</optimization>
+
+	<optimization>
+	  <old_node name="toto">
+	<inputs>
+	  <constant id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	<conditions>
+	  <predicat name="estEgal" idref1="e1" idref2="e2"/>
+	</conditions>
+	  </old_node>
+	  <new_node>
+	<node_operator name="titi">
+	  <node_constant value="1"/>
+	</node_operator>
+	  </new_node>
+	</optimization>
+
+	<optimization>
+	  <old_node name="toto">
+	<inputs>
+	  <constant id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	<conditions>
+	  <predicat name="estSuperieur" idref1="e1" idref2="e2"/>
+	</conditions>
+	  </old_node>
+	  <new_node>
+	<node_operator name="tutu">
+	  <node_constant value="e1"/>
+	</node_operator>
+	  </new_node>
+	</optimization>
+
+	<optimization>
+	  <old_node name="-">
+	<inputs>
+	  <variable id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	<conditions>
+	  <predicat not="true" name="estPositif" idref1="e2"/>
+	</conditions>
+	  </old_node>
+	  <new_node>
+	<node_operator name="+">
+	  <node_variable idref="e1"/>
+	  <node_constant idref="e2" opposite="true"/>
+	</node_operator>
+	  </new_node>
+	</optimization>
+
+	<optimization>
+	  <old_node name="+">
+	<inputs>
+	  <constant id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	<conditions>
+	  <predicat name="estOppose" idref1="e1" idref2="e2"/>
+	</conditions>
+	  </old_node>
+	  <new_node>
+	<node_constant value="0"/>
+	  </new_node>
+	</optimization>
+
+	<optimization>
+	  <old_node name="cos">
+	<inputs>
+	  <constant value="0"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_constant value="0"/>
+	  </new_node>
+	</optimization>
+
+  </optimizations>
+
+
+  <!-- SIMPLIFICATIONS MATHEMATIQUES A PROPREMENT PARLER -->
+  <arithmetic_computation>
+
+	<!-- SIMPLIFICATION DES ADDITIONS CONSTANTES -->
+	<computation>
+	  <old_node name="+">
+		<inputs>
+		  <constant id="e1"/>
+		  <constant id="e2"/>
+		</inputs>
+	  </old_node>
+	  <new_node>
+		<node_constant id="s1" eval="e1+e2"/> <!-- syntaxe destinée à JEP : compréhensible par JEP -->
+	  </new_node>
+	</computation>
+
+	<!-- SIMPLIFICATION DES SOUSTRACTIONS CONSTANTES -->
+	<computation>
+	  <old_node name="-">
+	<inputs>
+	  <constant id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_constant id="s1" eval="e1-e2"/> <!-- syntaxe destinée à JEP : compréhensible par JEP -->
+	  </new_node>
+	</computation>
+
+	<!-- SIMPLIFICATION DES MULTIPLICATIONS CONSTANTES -->
+	 <computation>
+	  <old_node name="*">
+	<inputs>
+	  <constant id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_constant id="s1" eval="e1*e2"/> <!-- syntaxe destinée à JEP : compréhensible par JEP -->
+	  </new_node>
+	</computation>
+
+	<!-- SIMPLIFICATION DES DIVISIONS CONSTANTES -->
+	<computation>
+	  <old_node name="/">
+	<inputs>
+	  <constant id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_constant id="s1" eval="e1/e2"/> <!-- syntaxe destinée à JEP : compréhensible par JEP -->
+	  </new_node>
+	</computation>
+
+
+	<!-- SIMPLIFICATION DES OPERATION QN (CODAGE VIRGULE FIXE) :  ROUND(E1 * 2^E2) -->
+	<computation>
+	  <old_node name="Qn">
+	<inputs>
+	  <constant id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_constant id="s1" eval="round(e1 * 2^e2)"/> <!-- syntaxe destinée à JEP : compréhensible par JEP -->
+	  </new_node>
+	</computation>
+
+	<!-- SIMPLIFICATION DES OPERATION QN (CODAGE VIRGULE FIXE) :  FLOOR(E1 * 2^E2) -->
+	<computation>
+	  <old_node name="Qf">
+	<inputs>
+	  <constant id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_constant id="s1" eval="floor(e1 * 2^e2)"/> <!-- syntaxe destinée à JEP : compréhensible par JEP -->
+	  </new_node>
+	</computation>
+
+	<!-- SIMPLIFICATION DES OPERATION QN (CODAGE VIRGULE FIXE) :  CEIL(E1 * 2^E2) -->
+	<computation>
+	  <old_node name="Qc">
+	<inputs>
+	  <constant id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_constant id="s1" eval="ceil(e1 * 2^e2)"/> <!-- syntaxe destinée à JEP : compréhensible par JEP -->
+	  </new_node>
+	</computation>
+
+	<!-- SIMPLIFICATION DES OPERATION QR (CODAGE VIRGULE FIXE) :  ROUND(E1 * 2^E2) -->
+	<computation>
+	  <old_node name="Qr">
+	<inputs>
+	  <constant id="e1"/>
+	  <constant id="e2"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_constant id="s1" eval="round(e1 * 2^e2)"/> <!-- syntaxe destinée à JEP : compréhensible par JEP -->
+	  </new_node>
+	</computation>
+
+	<!-- SIMPLIFICATION DE L'OPERATION COSINUS(constante) -->
+	<computation>
+	  <old_node name="cos">
+	<inputs>
+	  <constant id="e1"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_constant id="s1" eval="cos(e1)"/>
+	  </new_node>
+	</computation>
+
+	<!-- SIMPLIFICATION DE L'OPERATION SINUS(constante) -->
+	<computation>
+	  <old_node name="sin">
+	<inputs>
+	  <constant id="e1"/>
+	</inputs>
+	  </old_node>
+	  <new_node>
+	<node_constant id="s1" eval="sin(e1)"/>
+	  </new_node>
+	</computation>
+
+	<!-- SIMPLIFICATION DE L'OPERATION TANGENTE(constante) -->
+	<computation>
+	  <old_node name="tan">
+		<inputs>
+		  <constant id="e1"/>
+		</inputs>
+	  </old_node>
+	  <new_node name="tan">
+		<node_constant id="s1" eval="tan(e1)"/>
+	  </new_node>
+	</computation>
+
+	<!-- EXEMPLE DE SIMPLIFICATION : OPERATEUR A 2 SORTIES -->
+	<computation>
+	  <old_node name="soustr">
+		<inputs>
+		  <constant id="e1"/>
+		  <constant id="e2"/>
+		</inputs>
+	  </old_node>
+	  <new_node>
+		<node_constant id="s1" eval="e1-e2"/> <!-- cas de plusieurs sorties -->
+		<node_constant id="s2" eval="e2-e1"/>
+	  </new_node>
+	</computation>
+
+  </arithmetic_computation>
+</optimization_file>

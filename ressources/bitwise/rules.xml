@@ -1,0 +1,240 @@
+<!-- 
+-
+- Defintion style :
+-
+-	FUNCTION_NAME
+-	VMin_Expression
+-	VMax_Expression
+-
+-->
+
+<functions>
+
+<rule>
+	<name>assert</name>
+	<minEq>Min1</minEq>
+	<maxEq>Max1</maxEq>
+</rule>
+
+<rule>
+	<name>&gt;</name>
+	<minEq>1</minEq>
+	<maxEq>1</maxEq>
+</rule>
+
+<rule>
+	<name>&lt;</name>
+	<minEq>1</minEq>
+	<maxEq>1</maxEq>
+</rule>
+
+<rule>
+	<name>&gt;=</name>
+	<minEq>1</minEq>
+	<maxEq>1</maxEq>
+</rule>
+
+<rule>
+	<name>&lt;=</name>
+	<minEq>1</minEq>
+	<maxEq>1</maxEq>
+</rule>
+
+<rule>
+	<name>REG</name>
+	<minEq>Min1</minEq>
+	<maxEq>Max1</maxEq>
+</rule>
+
+<rule>
+	<name>Z-1</name>
+	<minEq>Min1</minEq>
+	<maxEq>Max1</maxEq>
+</rule>
+
+<rule>
+	<name>=></name>
+	<minEq>Min1</minEq>
+	<maxEq>Max1</maxEq>
+</rule>
+
+<rule>
+	<name>ADD</name>
+	<minEq>Min1+Min2</minEq>
+	<maxEq>Max1+Max2</maxEq>
+</rule>
+
+<rule>
+	<name>SUB</name>
+	<minEq>Min1-Max2</minEq>
+	<maxEq>Max1-Min2</maxEq>
+</rule>
+
+<rule>
+	<name>MUL</name>
+	<minEq>min(min(Min1*Min2,Max1*Max2),  min(Max1*Min2, Min1*Max2))</minEq>
+	<maxEq>max(max(Min1*Min2, Max1*Max2), max(Max1*Min2, Min1*Max2))</maxEq>
+</rule>
+
+<rule>
+	<name>SQR</name>
+	<minEq>min(Min1*Min1,0)</minEq>
+	<maxEq>Max1*Max1</maxEq>
+</rule>
+
+<rule>
+	<name>DIV</name>
+	<minEq>Min1/Min2</minEq>
+	<maxEq>Max1/Max2</maxEq>
+</rule>
+
+<rule>
+	<name>ABS</name>
+	<minEq>max(Min1,0)</minEq>
+	<maxEq>max(abs(Min1),abs(Max1))</maxEq>
+</rule>
+
+<rule>
+	<name>SHR</name>
+	<minEq>Min1/(2^Min2)</minEq>
+	<maxEq>Max1/(2^Max2)</maxEq>
+</rule>
+
+<rule>
+	<name>MAC</name>
+	<minEq>(Min1*Min2)+Min3</minEq>
+	<maxEq>(Max1*Max2)+Min3</maxEq>
+</rule>
+
+<rule>
+	<name>+</name>
+	<minEq>Min1+Min2</minEq>
+	<maxEq>Max1+Max2</maxEq>
+</rule>
+
+<rule>
+	<name>-</name>
+	<minEq>Min1-Max2</minEq>
+	<maxEq>Max1-Min2</maxEq>
+</rule>
+
+<rule>
+	<name>*</name>
+	<minEq>min(min(Min1*Min2,Max1*Max2),  min(Max1*Min2, Min1*Max2))</minEq>
+	<maxEq>max(max(Min1*Min2, Max1*Max2), max(Max1*Min2, Min1*Max2))</maxEq>
+</rule>
+
+<rule><name>/</name>
+	<minEq>floor(min(min(Min1/Min2, Max1/Max2), min(Max1/Min2, Min1/Max2)))</minEq>
+	<maxEq>floor(max(max(Min1/Min2, Max1/Max2), max(Max1/Min2, Min1/Max2)))</maxEq>
+</rule>
+
+<rule><name>DIV2</name>
+	<minEq>floor(Min1/2)</minEq>
+	<maxEq>floor(Max1/2)</maxEq>
+</rule>
+
+<rule><name>DIV4</name>
+	<minEq>floor(Min1/4)</minEq>
+	<maxEq>floor(Max1/4)</maxEq>
+</rule>
+
+<rule><name>DIV8</name>
+	<minEq>floor(Min1/8)</minEq>
+	<maxEq>floor(Max1/8)</maxEq>
+</rule>
+
+<rule><name>DIV16</name>
+	<minEq>floor(Min1/16)</minEq>
+	<maxEq>floor(Max1/16)</maxEq>
+</rule>
+
+<!-- Expression de la fonction Puissance (pow) -->
+<rule><name>pow</name>
+	<minEq>Min1^Min2</minEq>
+	<maxEq>Max1^Max2</maxEq>
+</rule>
+
+<!-- Expression de la fonction décalage gauche (shift left) -->
+<rule><name>lshift</name>
+	<minEq>Min1*(2^Min2)</minEq>
+	<maxEq>Max1*(2^Max2)</maxEq>
+</rule>
+
+<!-- Expression de la fonction décalage droite (shift right) -->
+<rule><name>rshift</name>
+	<minEq>floor(Min1/(2^Min2))</minEq>
+	<maxEq>floor(Max1/(2^Max2))</maxEq>
+</rule>
+
+<!-- Expression de la fonction test d'égalité -->
+<rule><name>Equal</name>
+	<minEq>0</minEq>
+	<maxEq>1</maxEq>
+</rule>
+
+<!-- Expression de la fonction test de différence -->
+<rule><name>nEqual</name>
+	<minEq>0</minEq>
+	<maxEq>1</maxEq>
+</rule>
+
+<!-- Expression de la fonction décalage droite (shift right) -->
+<rule><name>Less</name>
+	<minEq>0</minEq>
+	<maxEq>1</maxEq>
+</rule>
+
+<!-- Expression de la fonction décalage droite (shift right) -->
+<rule><name>More</name>
+	<minEq>0</minEq>
+	<maxEq>1</maxEq>
+</rule>
+
+<rule>
+	<name>ACS</name>
+	<minEq>0</minEq>
+	<maxEq>1023</maxEq>
+</rule>
+
+<rule>
+	<name>BM</name>
+	<minEq>0</minEq>
+	<maxEq>31</maxEq>
+</rule>
+
+<rule>
+	<name>EXTRACT_MSB</name>
+	<minEq>0</minEq>
+	<maxEq>1</maxEq>
+</rule>
+
+<rule>
+	<name>EXTRACT_PM</name>
+	<minEq>0</minEq>
+	<maxEq>511</maxEq>
+</rule>
+
+<rule>
+	<name>voter</name>
+	<minEq>min(min(Min1,Min2),Min3)</minEq>
+	<maxEq>max(max(Max1,Max2),Max3)</maxEq>
+	<minEq>0</minEq>
+	<maxEq>1</maxEq>
+</rule>
+
+<!-- Expression de la fonction minimum de 2 nombres -->
+<rule>
+	<name>min</name>
+	<minEq>min(Min1,Min2)</minEq>
+	<maxEq>min(Max1,Max2)</maxEq>
+</rule>
+
+<!-- Expression de la fonction maximum de 2 nombres -->
+<rule>
+	<name>max</name>
+	<minEq>max(Min1,Min2)</minEq>
+	<maxEq>max(Max1,Max2)</maxEq>
+</rule>
+
+</functions>
