@@ -1,5 +1,6 @@
 package aurelienribon.flow.services;
 
+import javax.swing.Icon;
 import javax.swing.JPanel;
 
 /**
@@ -26,9 +27,9 @@ public abstract class Service {
 		callback.progressUpdateRequested(progress, description);
 	}
 
-	protected void show(String title, JPanel panel) {
+	protected void show(String title, JPanel panel, Icon icon) {
 		assert callback != null;
-		callback.showRequested(title, panel);
+		callback.showRequested(title, panel, icon);
 	}
 
 	// -------------------------------------------------------------------------
@@ -43,7 +44,7 @@ public abstract class Service {
 
 	static interface Callback {
 		public void logRequested(String msg);
-		public void showRequested(String title, JPanel panel);
+		public void showRequested(String title, JPanel panel, Icon icon);
 		public void progressUpdateRequested(float progress, String description);
 	}
 }

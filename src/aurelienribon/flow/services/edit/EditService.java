@@ -3,6 +3,7 @@ package aurelienribon.flow.services.edit;
 import aurelienribon.flow.services.Service;
 import aurelienribon.flow.services.ServiceContext;
 import aurelienribon.flow.services.ServiceExecutionException;
+import gfx.Gfx;
 import java.io.File;
 
 /**
@@ -14,6 +15,6 @@ public class EditService extends Service {
 		File file = new File(ctx.input);
 		EditView view = new EditView();
 		view.setup(file);
-		show(file.getName(), view);
+		show(file.getName(), view, Gfx.IC_FILE);
 	}
 }

@@ -1,5 +1,7 @@
 
 import aurelienribon.flow.ui.MainWindow;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -20,10 +22,17 @@ public class Main {
 				}
 
 				MainWindow mw = new MainWindow();
-				mw.setSize(1000, 700);
+				mw.setSize(trimSize(1200, 800));
 				mw.setLocationRelativeTo(null);
 				mw.setVisible(true);
 			}
 		});
+	}
+
+	private static Dimension trimSize(int w, int h) {
+		Dimension size = Toolkit.getDefaultToolkit().getScreenSize();
+		if (size.width < w) w = size.width - 100;
+		if (size.height < h) h = size.height - 100;
+		return new Dimension(w, h);
 	}
 }

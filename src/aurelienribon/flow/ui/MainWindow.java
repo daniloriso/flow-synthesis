@@ -5,11 +5,9 @@ import aurelienribon.flow.services.ServiceExecutionException;
 import aurelienribon.flow.services.ServiceProvider;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.*;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
@@ -25,10 +23,14 @@ public class MainWindow extends javax.swing.JFrame {
 		services.addListener(serviceProviderEventListener);
 		services.launchSync(ServiceProvider.SETUP_APP, null);
 		services.launchSync(ServiceProvider.SHOW_WELCOME, null);
+		services.launchAsync(ServiceProvider.SETUP_GRAPHLAB, null, null);
 
-		addWindowListener(new WindowAdapter() {
-			@Override public void windowOpened(WindowEvent e) {
-				services.launchAsync(ServiceProvider.SETUP_GRAPHLAB, null, null);
+		tabbedPanel.addMouseListener(new MouseAdapter() {
+			@Override public void mouseClicked(MouseEvent e) {
+				int idx = tabbedPanel.getUI().tabForCoordinate(tabbedPanel, e.getX(), e.getY());
+				boolean isMiddle = SwingUtilities.isMiddleMouseButton(e);
+				boolean isDoubleLeft = SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2;
+				if (idx > -1 && (isMiddle || isDoubleLeft)) tabbedPanel.remove(idx);
 			}
 		});
     }
@@ -39,9 +41,10 @@ public class MainWindow extends javax.swing.JFrame {
 		@Override public void serviceProgressUpdate(String serviceName, Service service, float progress, String description) {}
 		@Override public void serviceLog(String serviceName, Service service, String msg) {}
 		@Override public void serviceError(String serviceName, Service service, ServiceExecutionException ex) {}
-		@Override public void serviceShow(String serviceName, Service service, String title, JPanel panel) {
+		@Override public void serviceShow(String serviceName, Service service, String title, JPanel panel, Icon icon) {
 			applyTheme(panel);
-			tabbedPanel.addTab(title, panel);
+			tabbedPanel.addTab(title, icon, panel);
+			tabbedPanel.setSelectedComponent(panel);
 		}
 	};
 

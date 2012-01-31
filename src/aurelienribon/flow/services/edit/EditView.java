@@ -15,6 +15,7 @@ public class EditView extends javax.swing.JPanel {
 
     public EditView() {
         initComponents();
+		editArea.setTabSize(4);
 
 		saveBtn.addActionListener(new ActionListener() {
 			@Override public void actionPerformed(ActionEvent e) {
@@ -32,10 +33,10 @@ public class EditView extends javax.swing.JPanel {
 		this.file = file;
 
 		try {
-			filenameLabel.setText(file.getCanonicalPath());
+			filenameLabel.setText("> " + file.getCanonicalPath());
 			editArea.setText(FileUtils.readFileToString(file));
 		} catch (IOException ex) {
-			filenameLabel.setText(file.getAbsolutePath());
+			filenameLabel.setText("> " + file.getAbsolutePath());
 			String msg = "The file cannot be read.";
 			JOptionPane.showMessageDialog(EditView.this, msg, "Warning", JOptionPane.WARNING_MESSAGE);
 		}
@@ -45,26 +46,28 @@ public class EditView extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        filenameLabel = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         saveBtn = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         editArea = new javax.swing.JTextArea();
-        filenameLabel = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
+
+        filenameLabel.setText("> filename");
+        add(filenameLabel, java.awt.BorderLayout.PAGE_START);
+
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         saveBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/ic_save.png"))); // NOI18N
-        saveBtn.setText("Save");
         saveBtn.setFocusable(false);
         jToolBar1.add(saveBtn);
 
-        add(jToolBar1, java.awt.BorderLayout.PAGE_START);
-
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel1.add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
         jScrollPane1.setBorder(null);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
@@ -75,10 +78,6 @@ public class EditView extends javax.swing.JPanel {
         jScrollPane1.setViewportView(editArea);
 
         jPanel1.add(jScrollPane1, java.awt.BorderLayout.CENTER);
-
-        filenameLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/ic_file.png"))); // NOI18N
-        filenameLabel.setText("jLabel1");
-        jPanel1.add(filenameLabel, java.awt.BorderLayout.PAGE_START);
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents

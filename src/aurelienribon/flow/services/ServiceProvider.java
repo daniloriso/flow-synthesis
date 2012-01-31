@@ -44,7 +44,7 @@ public class ServiceProvider {
 
 		service.callback = new Service.Callback() {
 			@Override public void logRequested(String msg) {fireServiceLog(serviceName, service, msg);}
-			@Override public void showRequested(String title, JPanel panel) {fireServiceShow(serviceName, service, title, panel);}
+			@Override public void showRequested(String title, JPanel panel, Icon icon) {fireServiceShow(serviceName, service, title, panel, icon);}
 			@Override public void progressUpdateRequested(float progress, String description) {fireServiceProgressUpdate(serviceName, service, progress, description);}
 		};
 
@@ -69,7 +69,7 @@ public class ServiceProvider {
 
 		service.callback = new Service.Callback() {
 			@Override public void logRequested(String msg) {fireServiceLog(serviceName, service, msg);}
-			@Override public void showRequested(String title, JPanel panel) {fireServiceShow(serviceName, service, title, panel);}
+			@Override public void showRequested(String title, JPanel panel, Icon icon) {fireServiceShow(serviceName, service, title, panel, icon);}
 			@Override public void progressUpdateRequested(float progress, String description) {fireServiceProgressUpdate(serviceName, service, progress, description);}
 		};
 
@@ -119,7 +119,7 @@ public class ServiceProvider {
 		public void serviceProgressUpdate(String serviceName, Service service, float progress, String description);
 		public void serviceLog(String serviceName, Service service, String msg);
 		public void serviceError(String serviceName, Service service, ServiceExecutionException ex);
-		public void serviceShow(String serviceName, Service service, String title, JPanel panel);
+		public void serviceShow(String serviceName, Service service, String title, JPanel panel, Icon icon);
 	}
 
 	private void fireServiceCall(final String serviceName, final Service service, final String input) {
@@ -167,11 +167,11 @@ public class ServiceProvider {
 		});
 	}
 
-	private void fireServiceShow(final String serviceName, final Service service, final String title, final JPanel panel) {
+	private void fireServiceShow(final String serviceName, final Service service, final String title, final JPanel panel, final Icon icon) {
 		synchronize(new Runnable() {
 			@Override public void run() {
 				for (EventListener listener : listeners)
-					listener.serviceShow(serviceName, service, title, panel);
+					listener.serviceShow(serviceName, service, title, panel, icon);
 			}
 		});
 	}

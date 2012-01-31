@@ -5,6 +5,8 @@ import aurelienribon.flow.models.ModelUtils;
 import aurelienribon.flow.services.ServiceProvider;
 import gfx.Gfx;
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ import javax.swing.ToolTipManager;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 import org.apache.commons.io.FilenameUtils;
 import org.ini4j.Wini;
 
@@ -33,12 +36,14 @@ public class ModelsPanel extends javax.swing.JPanel {
 
     public ModelsPanel() {
         initComponents();
-		modelsTree.setCellRenderer(new ModelsTreeCellRenderer());
-		ToolTipManager.sharedInstance().registerComponent(modelsTree);
     }
 
 	public void setup(ServiceProvider services) {
 		this.services = services;
+		
+		modelsTree.addMouseListener(new ModelsTreeMouseListener(modelsTree, services));
+		modelsTree.setCellRenderer(new ModelsTreeCellRenderer());
+		ToolTipManager.sharedInstance().registerComponent(modelsTree);
 
 		String modelsDirStr = "";
 		String resultsDirStr = "";
@@ -155,6 +160,30 @@ public class ModelsPanel extends javax.swing.JPanel {
 			}
 
 			return label;
+		}
+	}
+
+	private static class ModelsTreeMouseListener extends MouseAdapter {
+		private final JTree tree;
+		private final ServiceProvider services;
+
+		public ModelsTreeMouseListener(JTree tree, ServiceProvider services) {
+			this.tree = tree;
+			this.services = services;
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			if (e.getClickCount() == 2) {
+				TreePath path = tree.getPathForLocation(e.getX(), e.getY());
+				if (path == tree.getSelectionPath()) {
+					DefaultMutableTreeNode node = (DefaultMutableTreeNode) path.getLastPathComponent();
+					if (node.getUserObject() instanceof File) {
+						File file = (File) node.getUserObject();
+						services.launchSync(ServiceProvider.EDIT, file.getAbsolutePath());
+					}
+				}
+			}
 		}
 	}
 

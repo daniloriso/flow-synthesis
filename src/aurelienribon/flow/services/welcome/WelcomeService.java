@@ -9,6 +9,6 @@ import aurelienribon.flow.services.ServiceExecutionException;
  */
 public class WelcomeService extends Service {
 	@Override public void process(ServiceContext ctx) throws ServiceExecutionException {
-		show("Welcome", new WelcomePanel());
+		show("Welcome", new WelcomePanel(), null);
 	}
 }
