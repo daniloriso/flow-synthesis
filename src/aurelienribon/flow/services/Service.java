@@ -1,5 +1,7 @@
 package aurelienribon.flow.services;
 
+import javax.swing.JPanel;
+
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
@@ -8,7 +10,7 @@ public abstract class Service {
 	// Abstract API
 	// -------------------------------------------------------------------------
 
-	public abstract void process(String input) throws ServiceExecutionException;
+	public abstract void process(ServiceContext ctx) throws ServiceExecutionException;
 
 	// -------------------------------------------------------------------------
 	// Protected API
@@ -19,12 +21,12 @@ public abstract class Service {
 		callback.logRequested(msg);
 	}
 
-	protected void updateProgress(float progress, String description) {
+	protected void progress(float progress, String description) {
 		assert callback != null;
 		callback.progressUpdateRequested(progress, description);
 	}
 
-	protected void show(String title, ServiceUi panel) {
+	protected void show(String title, JPanel panel) {
 		assert callback != null;
 		callback.showRequested(title, panel);
 	}
@@ -41,7 +43,7 @@ public abstract class Service {
 
 	static interface Callback {
 		public void logRequested(String msg);
-		public void showRequested(String title, ServiceUi panel);
+		public void showRequested(String title, JPanel panel);
 		public void progressUpdateRequested(float progress, String description);
 	}
 }
