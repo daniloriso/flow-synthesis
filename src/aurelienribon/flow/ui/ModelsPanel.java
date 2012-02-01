@@ -40,7 +40,7 @@ public class ModelsPanel extends javax.swing.JPanel {
 
 	public void setup(ServiceProvider services) {
 		this.services = services;
-		
+
 		modelsTree.addMouseListener(new ModelsTreeMouseListener(modelsTree, services));
 		modelsTree.setCellRenderer(new ModelsTreeCellRenderer());
 		ToolTipManager.sharedInstance().registerComponent(modelsTree);
@@ -197,6 +197,8 @@ public class ModelsPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         modelsTree = new javax.swing.JTree();
+
+        jScrollPane1.setBorder(null);
 
         modelsTree.setRootVisible(false);
         modelsTree.setShowsRootHandles(true);
