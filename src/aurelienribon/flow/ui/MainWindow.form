@@ -41,7 +41,7 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="modelsPanel" pref="233" max="32767" attributes="0"/>
+                      <Component id="modelsPanel" pref="268" max="32767" attributes="0"/>
                       <Component id="perfMonPanel1" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -70,7 +70,7 @@
             </Property>
           </Properties>
         </Component>
-        <Container class="aurelienribon.flow.ui.PerfMonPanel" name="perfMonPanel1">
+        <Container class="aurelienribon.flow.ui.perfmon.PerfMonPanel" name="perfMonPanel1">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">

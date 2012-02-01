@@ -89,7 +89,7 @@ public class MainWindow extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         modelsPanel = new aurelienribon.flow.ui.ModelsPanel();
-        perfMonPanel1 = new aurelienribon.flow.ui.PerfMonPanel();
+        perfMonPanel1 = new aurelienribon.flow.ui.perfmon.PerfMonPanel();
         jPanel3 = new javax.swing.JPanel();
         tabbedPanel = new javax.swing.JTabbedPane();
 
@@ -120,7 +120,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(modelsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(modelsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                     .addComponent(perfMonPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -162,7 +162,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private aurelienribon.flow.ui.ModelsPanel modelsPanel;
-    private aurelienribon.flow.ui.PerfMonPanel perfMonPanel1;
+    private aurelienribon.flow.ui.perfmon.PerfMonPanel perfMonPanel1;
     private javax.swing.JTabbedPane tabbedPanel;
     // End of variables declaration//GEN-END:variables
 }

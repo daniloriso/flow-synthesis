@@ -1,17 +1,23 @@
 package gfx;
 
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.ImageIcon;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
 public class Gfx {
-	public static final ImageIcon IC_BULLET_RED = new ImageIcon(Gfx.class.getResource("ic_bullet_red.png"));
-	public static final ImageIcon IC_BULLET_ORANGE = new ImageIcon(Gfx.class.getResource("ic_bullet_orange.png"));
-	public static final ImageIcon IC_BULLET_GREEN = new ImageIcon(Gfx.class.getResource("ic_bullet_green.png"));
-
-	public static final ImageIcon IC_FILE = new ImageIcon(Gfx.class.getResource("ic_file.png"));
-	public static final ImageIcon IC_BIN = new ImageIcon(Gfx.class.getResource("ic_bin.png"));
-	public static final ImageIcon IC_PLAY = new ImageIcon(Gfx.class.getResource("ic_play.png"));
-	public static final ImageIcon IC_GRAPH = new ImageIcon(Gfx.class.getResource("ic_graph.png"));
+	private static Map<String, ImageIcon> icons = new HashMap<String, ImageIcon>();
+	
+	public static ImageIcon getIcon(String name) {
+		if (!icons.containsKey(name)) {
+			URL url = Gfx.class.getResource(name);
+			if (url == null) throw new RuntimeException("Gfx not found: " + name);
+			icons.put(name, new ImageIcon(url));
+		}
+		
+		return icons.get(name);
+	}
 }

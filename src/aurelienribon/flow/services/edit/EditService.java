@@ -15,6 +15,6 @@ public class EditService extends Service {
 		File file = new File(ctx.input);
 		EditView view = new EditView();
 		view.setup(file);
-		show(file.getName(), view, Gfx.IC_FILE);
+		show(file.getName(), view, Gfx.getIcon("ic_file.png"));
 	}
 }

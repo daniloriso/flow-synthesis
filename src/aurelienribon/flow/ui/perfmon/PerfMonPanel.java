@@ -1,7 +1,10 @@
-package aurelienribon.flow.ui;
+package aurelienribon.flow.ui.perfmon;
 
 import com.sun.management.OperatingSystemMXBean;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.lang.management.ManagementFactory;
@@ -25,6 +28,7 @@ public class PerfMonPanel extends JPanel {
 
 	public PerfMonPanel() {
 		Timer timer = new Timer(1000, new ActionListener() {@Override public void actionPerformed(ActionEvent e) {update();}});
+		timer.setInitialDelay(0);
 		timer.start();
 	}
 
