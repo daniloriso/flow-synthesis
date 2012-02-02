@@ -88,7 +88,7 @@ public class MainWindow extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        modelsPanel = new aurelienribon.flow.ui.ModelsPanel();
+        modelsPanel = new aurelienribon.flow.ui.modelstree.ModelsPanel();
         perfMonPanel1 = new aurelienribon.flow.ui.perfmon.PerfMonPanel();
         jPanel3 = new javax.swing.JPanel();
         tabbedPanel = new javax.swing.JTabbedPane();
@@ -128,7 +128,7 @@ public class MainWindow extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(modelsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                .addComponent(modelsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(perfMonPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -143,14 +143,14 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addComponent(tabbedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
+                .addComponent(tabbedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabbedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 542, Short.MAX_VALUE)
+                .addComponent(tabbedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -161,7 +161,7 @@ public class MainWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private aurelienribon.flow.ui.ModelsPanel modelsPanel;
+    private aurelienribon.flow.ui.modelstree.ModelsPanel modelsPanel;
     private aurelienribon.flow.ui.perfmon.PerfMonPanel perfMonPanel1;
     private javax.swing.JTabbedPane tabbedPanel;
     // End of variables declaration//GEN-END:variables

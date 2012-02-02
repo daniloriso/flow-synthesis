@@ -12,8 +12,13 @@ import java.io.File;
 import java.io.IOException;
 import java.net.*;
 import javax.swing.*;
-import org.apache.commons.io.IOUtils;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 import org.ini4j.Wini;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
@@ -51,25 +56,47 @@ public class WelcomePanel extends JPanel {
 
 	private void loadEntries() {
 		new Thread(new Runnable() {
-			@Override public void run() {
+			@Override public void run() {				
 				final CardLayout cl = (CardLayout) cardPanel.getLayout();
 				SwingUtilities.invokeLater(new Runnable() {@Override public void run() {cl.show(cardPanel, "loadingCard");}});
 
 				try {
-					URLConnection connection = new URL("http://code.google.com/feeds/p/flow-synthesis/updates/basic").openConnection();
-					connection.setConnectTimeout(3000);
-					String feedContent = IOUtils.toString(connection.getInputStream());
-
 					DefaultListModel<UpdateEntry> model = new DefaultListModel<UpdateEntry>();
+					
+					HttpURLConnection connection = (HttpURLConnection) new URL("http://code.google.com/feeds/p/flow-synthesis/updates/basic").openConnection();
+					connection.setConnectTimeout(1000);
+					
+					Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(connection.getInputStream());
+					connection.disconnect();
+					
+					NodeList elems = doc.getElementsByTagName("entry");
+					for (int i=0; i<elems.getLength(); i++) {
+						Element elem = (Element) elems.item(i);
+						String date = getString(elem, "updated");
+						String author = getString(elem, "author");
+						String title = getString(elem, "title");
+						String content = getString(elem, "content");
+						UpdateEntry entry = new UpdateEntry(date, author, title, content);
+						model.addElement(entry);
+					}
+					
 					updatesList.setModel(model);
 					SwingUtilities.invokeLater(new Runnable() {@Override public void run() {cl.show(cardPanel, "listCard");}});
 
+				} catch (SAXException ex) {
+				} catch (ParserConfigurationException ex) {
 				} catch (MalformedURLException ex) {
 				} catch (IOException ex) {
 					SwingUtilities.invokeLater(new Runnable() {@Override public void run() {cl.show(cardPanel, "msgCard");}});
 				}
 			}
 		}).start();
+	}
+	
+	private String getString(Element entry, String child) {
+		NodeList elems = entry.getElementsByTagName(child);
+		if (elems.getLength() >= 1) return elems.item(0).getTextContent();
+		return "";
 	}
 
 	private class UpdateEntry {
@@ -86,12 +113,11 @@ public class WelcomePanel extends JPanel {
 		}
 	}
 
-	private class UpdatesListCellRenderer implements ListCellRenderer<UpdateEntry> {
+	private class UpdatesListCellRenderer extends UpdateEntryView implements ListCellRenderer<UpdateEntry> {
 		@Override
 		public Component getListCellRendererComponent(JList<? extends UpdateEntry> list, UpdateEntry value, int index, boolean isSelected, boolean cellHasFocus) {
-			UpdateEntryView view = new UpdateEntryView();
-			view.setup(value.date, value.author, value.title, value.content);
-			return view;
+			setup(value.date, value.author, value.title, value.content);
+			return this;
 		}
 	}
 

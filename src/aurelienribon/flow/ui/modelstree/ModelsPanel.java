@@ -1,4 +1,4 @@
-package aurelienribon.flow.ui;
+package aurelienribon.flow.ui.modelstree;
 
 import aurelienribon.flow.models.Model;
 import aurelienribon.flow.services.ServiceProvider;

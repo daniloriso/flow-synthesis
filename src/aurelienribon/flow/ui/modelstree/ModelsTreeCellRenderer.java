@@ -12,7 +12,7 @@ import javax.swing.tree.DefaultTreeCellRenderer;
 import org.apache.commons.io.FilenameUtils;
 
 /**
- * @author Your Name <your.name at your.org>
+ * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
 public class ModelsTreeCellRenderer extends DefaultTreeCellRenderer {
 	@Override

@@ -1,5 +1,8 @@
 package aurelienribon.flow.services.welcome;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
@@ -8,9 +11,18 @@ public class UpdateEntryView extends javax.swing.JPanel {
         initComponents();
     }
 
-	public void setup(String date, String author, String title, String content) {
+	public void setup(String date, String author, String title, String content) {				
+		title = title.replaceAll("\\<[^>]*>","");
+		title = title.replaceAll("\\([^\\)]*\\)\\s*", "");
+		
+		content = content.replaceAll("</?span[^>]*>", "");
+		content = content.replaceAll("</?a[^>]*>", "");
+		
+		Matcher m = Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}:\\d{2}:\\d{2})Z").matcher(date);
+		if (m.find()) date = m.group(3) + "/" + m.group(2) + "/" + m.group(1) + " @ " + m.group(4); 
+		
 		dateLabel.setText(date);
-		titleLabel.setText("<html>" + title);
+		titleLabel.setText(title);
 		contentLabel.setText("<html>" + content);
 	}
 
