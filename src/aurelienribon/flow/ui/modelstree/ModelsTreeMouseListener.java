@@ -28,7 +28,7 @@ public class ModelsTreeMouseListener extends MouseAdapter {
 		if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
 			if (node != null && node.getUserObject() instanceof File) {
 				File file = (File) node.getUserObject();
-				services.launchSync(ServiceProvider.EDIT, file.getAbsolutePath());
+				services.launchSync(ServiceProvider.EDIT, file);
 			}
 		}
 	}

@@ -1,5 +1,6 @@
 package aurelienribon.flow.services.welcome;
 
+import aurelienribon.flow.services.ServicePanel;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -11,7 +12,10 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.*;
-import javax.swing.*;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
+import javax.swing.SwingUtilities;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.ini4j.Wini;
@@ -23,7 +27,7 @@ import org.xml.sax.SAXException;
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
-public class WelcomePanel extends JPanel {
+public class WelcomePanel extends ServicePanel {
     public WelcomePanel() {
         initComponents();
 
@@ -147,6 +151,7 @@ public class WelcomePanel extends JPanel {
 
         jButton1.setText("jButton1");
 
+        setBackground(getTheme().SERVICE_BACKGROUND_COLOR);
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setOpaque(false);
@@ -185,7 +190,7 @@ public class WelcomePanel extends JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 266, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(arLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -202,6 +207,7 @@ public class WelcomePanel extends JPanel {
         reloadBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/ic_reload.png"))); // NOI18N
         reloadBtn.setMargin(new java.awt.Insets(2, 3, 2, 3));
 
+        cardPanel.setOpaque(false);
         cardPanel.setLayout(new java.awt.CardLayout());
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/ic32_loading.gif"))); // NOI18N
@@ -221,6 +227,8 @@ public class WelcomePanel extends JPanel {
 
         cardPanel.add(updatesListScrollPane, "listCard");
 
+        jPanel4.setOpaque(false);
+
         jLabel3.setText("<html>Feed not available.<br/>Please check the url or your internet connection.");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
@@ -234,7 +242,7 @@ public class WelcomePanel extends JPanel {
                 .addGap(2, 2, 2)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +285,7 @@ public class WelcomePanel extends JPanel {
                     .addComponent(reloadBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(feedField))
                 .addGap(18, 18, 18)
-                .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE)
+                .addComponent(cardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

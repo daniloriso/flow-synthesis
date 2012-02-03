@@ -12,7 +12,9 @@ import java.io.File;
 public class EditService extends Service {
 	@Override
 	public void process(ServiceContext ctx) throws ServiceExecutionException {
-		File file = new File(ctx.input);
+		assert ctx.input instanceof File;
+		
+		File file = (File) ctx.input;
 		EditView view = new EditView();
 		view.setup(file);
 		show(file.getName(), view, Gfx.getIcon("ic_file.png"));

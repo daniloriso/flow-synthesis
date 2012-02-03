@@ -12,12 +12,13 @@ import javax.swing.SwingUtilities;
 public class SetupGraphlabService extends Service {
 	@Override
 	public void process(ServiceContext ctx) throws ServiceExecutionException {
-		final LaunchingGraphlabDialog dialog = new LaunchingGraphlabDialog(ctx.window, true);
-		dialog.setLocationRelativeTo(ctx.window);
+		final LaunchingGraphlabDialog dialog = new LaunchingGraphlabDialog(ctx.ui.window, true);
+		dialog.setLocationRelativeTo(ctx.ui.window);
 
 		SwingUtilities.invokeLater(new Runnable() {@Override public void run() {dialog.setVisible(true);}});
 
 		try {
+			Thread.sleep(500);
 			GlabUtils.initialize();
 		} catch (Exception ex) {
 			throw new ServiceExecutionException("Initialization failed.", ex);

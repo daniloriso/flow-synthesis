@@ -3,18 +3,18 @@ package aurelienribon.flow.ui;
 import aurelienribon.flow.services.Service;
 import aurelienribon.flow.services.ServiceExecutionException;
 import aurelienribon.flow.services.ServiceProvider;
-import java.awt.Component;
-import java.awt.Container;
+import java.awt.Rectangle;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.*;
+import javax.swing.plaf.TabbedPaneUI;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
 public class MainWindow extends javax.swing.JFrame {
-	private final ServiceProvider services = new ServiceProvider(this);
 	private final Theme theme = new Theme();
+	private final ServiceProvider services = new ServiceProvider(this, theme);
 
     public MainWindow() {
         initComponents();
@@ -36,52 +36,16 @@ public class MainWindow extends javax.swing.JFrame {
     }
 
 	private final ServiceProvider.EventListener serviceProviderEventListener = new ServiceProvider.EventListener() {
-		@Override public void serviceCall(String serviceName, Service service, String input) {}
+		@Override public void serviceCall(String serviceName, Service service, Object input) {}
 		@Override public void serviceComplete(String serviceName, Service service) {}
 		@Override public void serviceProgressUpdate(String serviceName, Service service, float progress, String description) {}
 		@Override public void serviceLog(String serviceName, Service service, String msg) {}
 		@Override public void serviceError(String serviceName, Service service, ServiceExecutionException ex) {}
 		@Override public void serviceShow(String serviceName, Service service, String title, JPanel panel, Icon icon) {
-			applyTheme(panel);
 			tabbedPanel.addTab(title, icon, panel);
 			tabbedPanel.setSelectedComponent(panel);
 		}
 	};
-
-	// -------------------------------------------------------------------------
-	// Theme
-	// -------------------------------------------------------------------------
-
-	private void applyTheme(JPanel panel) {
-		panel.setBackground(theme.SERVICE_BACKGROUND_COLOR);
-		panel.setForeground(theme.SERVICE_FOREGROUND_COLOR);
-		panel.setOpaque(true);
-
-		for (Component child : panel.getComponents()) applyThemeLoop(child);
-	}
-
-	private void applyThemeLoop(Component cmp) {
-		if (cmp instanceof JPanel) {
-			JPanel c = (JPanel) cmp;
-			c.setForeground(theme.SERVICE_FOREGROUND_COLOR);
-			c.setOpaque(false);
-		}
-
-		if (cmp instanceof JLabel) {
-			JLabel c = (JLabel) cmp;
-			c.setForeground(theme.SERVICE_FOREGROUND_COLOR);
-		}
-
-		if (cmp instanceof JButton) {
-			JButton c = (JButton) cmp;
-			c.setOpaque(false);
-		}
-
-		if (cmp instanceof Container) {
-			Container c = (Container) cmp;
-			for (Component child : c.getComponents()) applyThemeLoop(child);
-		}
-	}
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -128,7 +92,7 @@ public class MainWindow extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(modelsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                .addComponent(modelsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(perfMonPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -142,7 +106,7 @@ public class MainWindow extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(tabbedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
                 .addContainerGap())
         );
@@ -150,7 +114,7 @@ public class MainWindow extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(tabbedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addComponent(tabbedPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

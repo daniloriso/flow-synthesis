@@ -58,7 +58,7 @@ public class ModelsTreePopup extends JPopupMenu {
 	private static Action createEditAction(String name, final ServiceProvider services, final File file) {
 		return new AbstractAction(name, Gfx.getIcon("ic_edit.png")) {
 			@Override public void actionPerformed(ActionEvent e) {
-				services.launchSync(ServiceProvider.EDIT, file.getAbsolutePath());
+				services.launchSync(ServiceProvider.EDIT, file);
 			}
 		};
 	}

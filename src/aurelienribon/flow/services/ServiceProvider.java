@@ -1,14 +1,18 @@
 package aurelienribon.flow.services;
 
 import aurelienribon.flow.services.edit.EditService;
-import aurelienribon.flow.services.setupgraphlab.SetupGraphlabService;
 import aurelienribon.flow.services.setupapp.SetupAppService;
+import aurelienribon.flow.services.setupgraphlab.SetupGraphlabService;
 import aurelienribon.flow.services.welcome.WelcomeService;
+import aurelienribon.flow.ui.Theme;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
@@ -22,9 +26,11 @@ public class ServiceProvider {
 	private final Map<String, Service> services = new HashMap<String, Service>();
 	private final List<EventListener> listeners = new CopyOnWriteArrayList<EventListener>();
 	private final JFrame window;
+	private final Theme theme;
 
-	public ServiceProvider(JFrame window) {
+	public ServiceProvider(JFrame window, Theme theme) {
 		this.window = window;
+		this.theme = theme;
 
 		services.put(SETUP_APP, new SetupAppService());
 		services.put(SETUP_GRAPHLAB, new SetupGraphlabService());
@@ -36,11 +42,10 @@ public class ServiceProvider {
 	// Public API
 	// -------------------------------------------------------------------------
 
-	public void launchSync(final String serviceName, final String input) {
+	public void launchSync(final String serviceName, final Object input) {
 		if (!services.containsKey(serviceName)) throw new RuntimeException("Service not found: " + serviceName);
 
 		final Service service = services.get(serviceName);
-		final String serviceInput = input == null ? "" : input;
 
 		service.callback = new Service.Callback() {
 			@Override public void logRequested(String msg) {fireServiceLog(serviceName, service, msg);}
@@ -51,7 +56,7 @@ public class ServiceProvider {
 		fireServiceCall(serviceName, service, input);
 
 		try {
-			ServiceContext ctx = new ServiceContext(serviceInput, this, window);
+			ServiceContext ctx = new ServiceContext(input, this, window, theme);
 			service.process(ctx);
 		} catch (ServiceExecutionException ex) {
 			fireServiceError(serviceName, service, ex);
@@ -61,11 +66,10 @@ public class ServiceProvider {
 		service.callback = null;
 	}
 
-	public void launchAsync(final String serviceName, final String input, final Callback callback) {
+	public void launchAsync(final String serviceName, final Object input, final Callback callback) {
 		if (!services.containsKey(serviceName)) throw new RuntimeException("Service not found: " + serviceName);
 
 		final Service service = services.get(serviceName);
-		final String serviceInput = input == null ? "" : input;
 
 		service.callback = new Service.Callback() {
 			@Override public void logRequested(String msg) {fireServiceLog(serviceName, service, msg);}
@@ -79,7 +83,7 @@ public class ServiceProvider {
 				synchronize(new Runnable() {@Override public void run() {if (callback != null) callback.begin();}});
 
 				try {
-					ServiceContext ctx = new ServiceContext(serviceInput, ServiceProvider.this, window);
+					ServiceContext ctx = new ServiceContext(input, ServiceProvider.this, window, theme);
 					service.process(ctx);
 				} catch (ServiceExecutionException ex) {
 					fireServiceError(serviceName, service, ex);
@@ -114,7 +118,7 @@ public class ServiceProvider {
 	}
 
 	public static interface EventListener {
-		public void serviceCall(String serviceName, Service service, String input);
+		public void serviceCall(String serviceName, Service service, Object input);
 		public void serviceComplete(String serviceName, Service service);
 		public void serviceProgressUpdate(String serviceName, Service service, float progress, String description);
 		public void serviceLog(String serviceName, Service service, String msg);
@@ -122,7 +126,7 @@ public class ServiceProvider {
 		public void serviceShow(String serviceName, Service service, String title, JPanel panel, Icon icon);
 	}
 
-	private void fireServiceCall(final String serviceName, final Service service, final String input) {
+	private void fireServiceCall(final String serviceName, final Service service, final Object input) {
 		synchronize(new Runnable() {
 			@Override public void run() {
 				for (EventListener listener : listeners)
