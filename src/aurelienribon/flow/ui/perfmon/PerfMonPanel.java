@@ -4,6 +4,7 @@ import com.sun.management.OperatingSystemMXBean;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Insets;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,12 +41,19 @@ public class PerfMonPanel extends JPanel {
 		int w = getWidth();
 		int h = getHeight();
 
+		if (getBorder() != null) {
+			Insets ins = getBorder().getBorderInsets(this);
+			w -= ins.left + ins.right;
+			h -= ins.top + ins.bottom;
+			gg.translate(ins.left, ins.top);
+		}
+
 		gg.setColor(BACKGROUND_COLOR);
 		gg.fillRect(0, 0, w, h);
 
 		gg.setColor(BACKGROUND_LINES_COLOR);
-		for (int i=1, n=10; i<n; i++) gg.drawLine(0, h/n*i, w, h/n*i);
-		for (int i=1, n=10; i<n; i++) gg.drawLine(w/n*i, 0, w/n*i, h);
+		for (int i=1, n=10; i<n; i++) gg.drawLine(0, h*i/n, w, h*i/n);
+		for (int i=1, n=10; i<n; i++) gg.drawLine(w*i/n, 0, w*i/n, h);
 
 		int[] xs = new int[bufferLength+2];
 		xs[0] = w*(POINTS_CNT-bufferLength+1)/POINTS_CNT;

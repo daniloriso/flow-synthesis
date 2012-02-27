@@ -1,0 +1,53 @@
+javax-swing-JScrollPane {
+	-swing-border: null;
+}
+
+aurelienribon-ui-components-TabPanel {
+	-swing-background: #BBC8D8;
+	-swing-border: matteborder(5, 0, 5, 0, #FDE1A0);
+	-arui-foreground-unselected: #FFF;
+	-arui-foreground-selected: #000;
+	-arui-foreground-mouseover: #FFF;
+	-arui-stroke: null;
+	-arui-stroke-unselected: null;
+	-arui-stroke-mouseover: #9BA7B7;
+	-arui-stroke-selected: null;
+	-arui-fill-unselected: null;
+	-arui-fill-mouseover: lineargradient(0, 0, 0, 1, 0, #6F7776, 1, #4F5F74);
+	-arui-fill-selected: lineargradient(0, 0, 0, 1, 0.49, #FFFAE7, 0.5, #FDE1A0);
+}
+
+#rootPanel {
+	-arui-fill: texture(url("/gfx/back_vs2010.png"));
+}
+
+#modelsPanel, #perfMonPanel {
+	-swing-background: #BBC8D8;
+	-swing-border: arui-groupborder(noarg);
+	-arui-border-stroke: #BCC7D8;
+	-arui-border-thickness: 0;
+	-arui-border-header-stroke: null;
+	-arui-border-header-thickness: 0;
+	-arui-border-header-fill: lineargradient(0, 0, 0, 1, 0, #4D6082, 1, #3D5277);
+	-arui-border-margin: 3 6;
+	-arui-border-foreground: #FFF;
+}
+
+#modelsPanel {
+	-arui-border-title: "Models";
+}
+
+#perfMonPanel {
+	-arui-border-title: "Performances";
+}
+
+.editArea {
+	-swing-font: "Monospaced" plain 11;
+	-swing-tabsize: 4;
+	-swing-background: #FFF;
+	-swing-foreground: #000;
+}
+
+.servicePanel {
+	-swing-background: #FFF;
+}

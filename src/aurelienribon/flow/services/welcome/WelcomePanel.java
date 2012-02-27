@@ -60,19 +60,19 @@ public class WelcomePanel extends ServicePanel {
 
 	private void loadEntries() {
 		new Thread(new Runnable() {
-			@Override public void run() {				
+			@Override public void run() {
 				final CardLayout cl = (CardLayout) cardPanel.getLayout();
 				SwingUtilities.invokeLater(new Runnable() {@Override public void run() {cl.show(cardPanel, "loadingCard");}});
 
 				try {
 					DefaultListModel<UpdateEntry> model = new DefaultListModel<UpdateEntry>();
-					
+
 					HttpURLConnection connection = (HttpURLConnection) new URL("http://code.google.com/feeds/p/flow-synthesis/updates/basic").openConnection();
 					connection.setConnectTimeout(1000);
-					
+
 					Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(connection.getInputStream());
 					connection.disconnect();
-					
+
 					NodeList elems = doc.getElementsByTagName("entry");
 					for (int i=0; i<elems.getLength(); i++) {
 						Element elem = (Element) elems.item(i);
@@ -80,10 +80,9 @@ public class WelcomePanel extends ServicePanel {
 						String author = getString(elem, "author");
 						String title = getString(elem, "title");
 						String content = getString(elem, "content");
-						UpdateEntry entry = new UpdateEntry(date, author, title, content);
-						model.addElement(entry);
+						model.addElement(new UpdateEntry(date, author, title, content));
 					}
-					
+
 					updatesList.setModel(model);
 					SwingUtilities.invokeLater(new Runnable() {@Override public void run() {cl.show(cardPanel, "listCard");}});
 
@@ -96,7 +95,7 @@ public class WelcomePanel extends ServicePanel {
 			}
 		}).start();
 	}
-	
+
 	private String getString(Element entry, String child) {
 		NodeList elems = entry.getElementsByTagName(child);
 		if (elems.getLength() >= 1) return elems.item(0).getTextContent();
@@ -117,11 +116,12 @@ public class WelcomePanel extends ServicePanel {
 		}
 	}
 
-	private class UpdatesListCellRenderer extends UpdateEntryView implements ListCellRenderer<UpdateEntry> {
+	private class UpdatesListCellRenderer implements ListCellRenderer<UpdateEntry> {
 		@Override
 		public Component getListCellRendererComponent(JList<? extends UpdateEntry> list, UpdateEntry value, int index, boolean isSelected, boolean cellHasFocus) {
-			setup(value.date, value.author, value.title, value.content);
-			return this;
+			UpdateEntryView view = new UpdateEntryView();
+			view.setup(value.date, value.author, value.title, value.content);
+			return view;
 		}
 	}
 
@@ -129,7 +129,6 @@ public class WelcomePanel extends ServicePanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -149,9 +148,6 @@ public class WelcomePanel extends ServicePanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
-        jButton1.setText("jButton1");
-
-        setBackground(getTheme().SERVICE_BACKGROUND_COLOR);
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setOpaque(false);
@@ -190,7 +186,7 @@ public class WelcomePanel extends ServicePanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(arLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,7 +197,7 @@ public class WelcomePanel extends ServicePanel {
 
         jPanel2.setOpaque(false);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel2.setText("Latest updates");
 
         reloadBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/ic_reload.png"))); // NOI18N
@@ -296,7 +292,6 @@ public class WelcomePanel extends ServicePanel {
     private javax.swing.JLabel arLabel;
     private javax.swing.JPanel cardPanel;
     private javax.swing.JTextField feedField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

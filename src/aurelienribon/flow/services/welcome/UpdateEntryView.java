@@ -11,16 +11,16 @@ public class UpdateEntryView extends javax.swing.JPanel {
         initComponents();
     }
 
-	public void setup(String date, String author, String title, String content) {				
+	public void setup(String date, String author, String title, String content) {
 		title = title.replaceAll("\\<[^>]*>","");
 		title = title.replaceAll("\\([^\\)]*\\)\\s*", "");
-		
+
 		content = content.replaceAll("</?span[^>]*>", "");
 		content = content.replaceAll("</?a[^>]*>", "");
-		
+
 		Matcher m = Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}:\\d{2}:\\d{2})Z").matcher(date);
-		if (m.find()) date = m.group(3) + "/" + m.group(2) + "/" + m.group(1) + " @ " + m.group(4); 
-		
+		if (m.find()) date = m.group(3) + "/" + m.group(2) + "/" + m.group(1) + " @ " + m.group(4);
+
 		dateLabel.setText(date);
 		titleLabel.setText(title);
 		contentLabel.setText("<html>" + content);
@@ -40,6 +40,7 @@ public class UpdateEntryView extends javax.swing.JPanel {
 
         dateLabel.setText("01/01/2012 @ 00:00");
 
+        contentLabel.setForeground(new java.awt.Color(102, 102, 102));
         contentLabel.setText("Content");
         contentLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 

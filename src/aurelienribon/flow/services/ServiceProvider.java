@@ -4,7 +4,6 @@ import aurelienribon.flow.services.edit.EditService;
 import aurelienribon.flow.services.setupapp.SetupAppService;
 import aurelienribon.flow.services.setupgraphlab.SetupGraphlabService;
 import aurelienribon.flow.services.welcome.WelcomeService;
-import aurelienribon.flow.ui.Theme;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,11 +25,9 @@ public class ServiceProvider {
 	private final Map<String, Service> services = new HashMap<String, Service>();
 	private final List<EventListener> listeners = new CopyOnWriteArrayList<EventListener>();
 	private final JFrame window;
-	private final Theme theme;
 
-	public ServiceProvider(JFrame window, Theme theme) {
+	public ServiceProvider(JFrame window) {
 		this.window = window;
-		this.theme = theme;
 
 		services.put(SETUP_APP, new SetupAppService());
 		services.put(SETUP_GRAPHLAB, new SetupGraphlabService());
@@ -56,7 +53,7 @@ public class ServiceProvider {
 		fireServiceCall(serviceName, service, input);
 
 		try {
-			ServiceContext ctx = new ServiceContext(input, this, window, theme);
+			ServiceContext ctx = new ServiceContext(input, this, window);
 			service.process(ctx);
 		} catch (ServiceExecutionException ex) {
 			fireServiceError(serviceName, service, ex);
@@ -83,7 +80,7 @@ public class ServiceProvider {
 				synchronize(new Runnable() {@Override public void run() {if (callback != null) callback.begin();}});
 
 				try {
-					ServiceContext ctx = new ServiceContext(input, ServiceProvider.this, window, theme);
+					ServiceContext ctx = new ServiceContext(input, ServiceProvider.this, window);
 					service.process(ctx);
 				} catch (ServiceExecutionException ex) {
 					fireServiceError(serviceName, service, ex);
