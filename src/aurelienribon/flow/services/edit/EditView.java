@@ -63,7 +63,8 @@ public class EditView extends javax.swing.JPanel {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        saveBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/ic_save.png"))); // NOI18N
+        saveBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/gfx/ic_save.png"))); // NOI18N
+        saveBtn.setText("Save");
         saveBtn.setFocusable(false);
         jToolBar1.add(saveBtn);
 
