@@ -28,7 +28,7 @@ public class ModelsTreeMouseListener extends MouseAdapter {
 		if (SwingUtilities.isLeftMouseButton(e) && e.getClickCount() == 2) {
 			if (node != null && node.getUserObject() instanceof File) {
 				File file = (File) node.getUserObject();
-				services.launchSync(ServiceProvider.EDIT, file);
+				services.launchSync(ServiceProvider.EDIT, file.getPath());
 			}
 		}
 	}
@@ -37,7 +37,7 @@ public class ModelsTreeMouseListener extends MouseAdapter {
 	public void mousePressed(MouseEvent e) {
 		TreePath path = tree.getPathForLocation(e.getX(), e.getY());
 		if (path != null) tree.setSelectionPath(path);
-		
+
 		DefaultMutableTreeNode node = getMouseOverSelectionNode(e);
 		if (e.isPopupTrigger() && node != null) {
 			JPopupMenu popup = ModelsTreePopup.create(services, node.getUserObject());
@@ -53,7 +53,7 @@ public class ModelsTreeMouseListener extends MouseAdapter {
 			if (popup != null) popup.show(tree, e.getX(), e.getY());
 		}
 	}
-	
+
 	private DefaultMutableTreeNode getMouseOverSelectionNode(MouseEvent e) {
 		TreePath path = tree.getPathForLocation(e.getX(), e.getY());
 		if (path != null && path == tree.getSelectionPath())

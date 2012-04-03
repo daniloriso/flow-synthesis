@@ -42,7 +42,7 @@ public class ServiceProvider {
 	// Public API
 	// -------------------------------------------------------------------------
 
-	public void launchSync(final String serviceName, final Object input) {
+	public void launchSync(final String serviceName, final String input) {
 		if (!services.containsKey(serviceName)) throw new RuntimeException("Service not found: " + serviceName);
 
 		final Service service = services.get(serviceName);
@@ -66,7 +66,7 @@ public class ServiceProvider {
 		service.callback = null;
 	}
 
-	public void launchAsync(final String serviceName, final Object input, final Callback callback) {
+	public void launchAsync(final String serviceName, final String input, final Callback callback) {
 		if (!services.containsKey(serviceName)) throw new RuntimeException("Service not found: " + serviceName);
 
 		final Service service = services.get(serviceName);
