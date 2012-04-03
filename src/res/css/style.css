@@ -18,7 +18,7 @@ aurelienribon-ui-components-TabPanel {
 }
 
 #rootPanel {
-	-arui-fill: texture(url("/gfx/back_vs2010.png"));
+	-arui-fill: texture(url("/res/gfx/bg.png"));
 }
 
 #modelsPanel, #perfMonPanel {
@@ -38,7 +38,7 @@ aurelienribon-ui-components-TabPanel {
 }
 
 #perfMonPanel {
-	-arui-border-title: "Performances";
+	-arui-border-title: "System watch";
 }
 
 .editArea {

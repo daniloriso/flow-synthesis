@@ -2,8 +2,6 @@ package aurelienribon.flow.ui.modelstree;
 
 import aurelienribon.flow.models.Model;
 import aurelienribon.flow.services.ServiceProvider;
-import aurelienribon.flow.ui.modelstree.ModelsTreeCellRenderer;
-import aurelienribon.flow.ui.modelstree.ModelsTreeMouseListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,7 +37,7 @@ public class ModelsPanel extends javax.swing.JPanel {
 		initilialize();
 		reload();
 	}
-	
+
 	private void initilialize() {
 		String modelsDirStr = "";
 		String resultsDirStr = "";
@@ -64,7 +62,7 @@ public class ModelsPanel extends javax.swing.JPanel {
 		if (!modelsDir.exists()) modelsDir.mkdirs();
 		if (!resultsDir.exists()) resultsDir.mkdirs();
 	}
-	
+
 	private void load() {
 		for (File file : modelsDir.listFiles()) {
 			if (FilenameUtils.getExtension(file.getName()).equals("m")) {

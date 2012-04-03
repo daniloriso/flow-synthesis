@@ -1,6 +1,7 @@
 package aurelienribon.flow.services;
 
 import aurelienribon.flow.services.edit.EditService;
+import aurelienribon.flow.services.graphplot.PlotGraphService;
 import aurelienribon.flow.services.setupapp.SetupAppService;
 import aurelienribon.flow.services.setupgraphlab.SetupGraphlabService;
 import aurelienribon.flow.services.welcome.WelcomeService;
@@ -21,6 +22,7 @@ public class ServiceProvider {
 	public static final String SETUP_GRAPHLAB = "SETUP_GRAPHLAB";
 	public static final String SHOW_WELCOME = "SHOW_WELCOME";
 	public static final String EDIT = "EDIT";
+	public static final String PLOT_GRAPH = "PLOT_GRAPH";
 
 	private final Map<String, Service> services = new HashMap<String, Service>();
 	private final List<EventListener> listeners = new CopyOnWriteArrayList<EventListener>();
@@ -33,6 +35,7 @@ public class ServiceProvider {
 		services.put(SETUP_GRAPHLAB, new SetupGraphlabService());
 		services.put(SHOW_WELCOME, new WelcomeService());
 		services.put(EDIT, new EditService());
+		services.put(PLOT_GRAPH, new PlotGraphService());
 	}
 
 	// -------------------------------------------------------------------------

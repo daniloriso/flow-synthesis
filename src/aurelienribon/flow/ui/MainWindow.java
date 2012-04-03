@@ -8,6 +8,7 @@ import aurelienribon.ui.css.Style;
 import aurelienribon.ui.css.StyleException;
 import aurelienribon.ui.css.swing.SwingStyle;
 import javax.swing.*;
+import res.Res;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
@@ -18,12 +19,13 @@ public class MainWindow extends javax.swing.JFrame {
 
     public MainWindow() {
         initComponents();
-		modelsPanel.setup(services);
 
 		services.addListener(serviceProviderEventListener);
 		services.launchSync(ServiceProvider.SETUP_APP, null);
 		services.launchSync(ServiceProvider.SHOW_WELCOME, null);
 		services.launchAsync(ServiceProvider.SETUP_GRAPHLAB, null, null);
+
+		modelsPanel.setup(services);
 
 		SwingStyle.init();
 		AruiStyle.init();
@@ -33,7 +35,7 @@ public class MainWindow extends javax.swing.JFrame {
 		Style.registerCssClasses(perfMonPanel, "#perfMonPanel");
 
 		try {
-			style = new Style(getClass().getResource("style.css"));
+			style = new Style(Res.getUrl("css/style.css"));
 			Style.apply(getContentPane(), style);
 		} catch (StyleException ex) {
 			throw new RuntimeException(ex);

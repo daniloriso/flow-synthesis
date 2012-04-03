@@ -12,11 +12,13 @@ public class UpdateEntryView extends javax.swing.JPanel {
     }
 
 	public void setup(String date, String author, String title, String content) {
-		title = title.replaceAll("\\<[^>]*>","");
-		title = title.replaceAll("\\([^\\)]*\\)\\s*", "");
+		int titleTrimIdx = title.indexOf(":");
+		title = title.substring(0, titleTrimIdx);
+		title = title + ", by " + author.trim();
 
-		content = content.replaceAll("</?span[^>]*>", "");
-		content = content.replaceAll("</?a[^>]*>", "");
+		int contentTrimIdx = content.lastIndexOf("<br/>") + 5;
+		content = content.substring(contentTrimIdx);
+		content = content.replaceAll("\n", "<br/>");
 
 		Matcher m = Pattern.compile("(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}:\\d{2}:\\d{2})Z").matcher(date);
 		if (m.find()) date = m.group(3) + "/" + m.group(2) + "/" + m.group(1) + " @ " + m.group(4);

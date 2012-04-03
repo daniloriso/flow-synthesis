@@ -1,22 +1,17 @@
-package aurelienribon.flow.services.edit;
+package aurelienribon.flow.services.graphplot;
 
 import aurelienribon.flow.services.Service;
 import aurelienribon.flow.services.ServiceContext;
 import aurelienribon.flow.services.ServiceExecutionException;
-import java.io.File;
 import res.Res;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
-public class EditService extends Service {
+public class PlotGraphService extends Service {
 	@Override
 	public void process(ServiceContext ctx) throws ServiceExecutionException {
-		assert ctx.input instanceof File;
-
-		File file = (File) ctx.input;
-		EditView view = new EditView();
-		view.setup(file);
-		show(file.getName(), view, Res.getImage("gfx/ic_file.png"));
+		PlotGraphPanel canvas = new PlotGraphPanel();
+		show("Graph", canvas, Res.getImage("gfx/ic_node.png"));
 	}
 }

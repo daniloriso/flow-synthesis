@@ -5,10 +5,7 @@ import aurelienribon.flow.services.ServiceContext;
 import aurelienribon.flow.services.ServiceExecutionException;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
-import javax.swing.JOptionPane;
 import org.apache.commons.io.FileUtils;
 import org.ini4j.Wini;
 

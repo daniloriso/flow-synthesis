@@ -67,7 +67,7 @@ public class WelcomePanel extends ServicePanel {
 				try {
 					DefaultListModel<UpdateEntry> model = new DefaultListModel<UpdateEntry>();
 
-					HttpURLConnection connection = (HttpURLConnection) new URL("http://code.google.com/feeds/p/flow-synthesis/updates/basic").openConnection();
+					HttpURLConnection connection = (HttpURLConnection) new URL(feedField.getText()).openConnection();
 					connection.setConnectTimeout(1000);
 
 					Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(connection.getInputStream());
@@ -154,7 +154,7 @@ public class WelcomePanel extends ServicePanel {
 
         jLabel1.setText("<html>\nWelcome to the Flow.Synthesis environment.");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/logo.png"))); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/gfx/logo.png"))); // NOI18N
 
         jLabel7.setText("<html>Based on the GraphLab high-level synthesis engine.");
 
@@ -186,7 +186,7 @@ public class WelcomePanel extends ServicePanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 229, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 288, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(arLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,13 +200,13 @@ public class WelcomePanel extends ServicePanel {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         jLabel2.setText("Latest updates");
 
-        reloadBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/ic_reload.png"))); // NOI18N
+        reloadBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/gfx/ic_reload.png"))); // NOI18N
         reloadBtn.setMargin(new java.awt.Insets(2, 3, 2, 3));
 
         cardPanel.setOpaque(false);
         cardPanel.setLayout(new java.awt.CardLayout());
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/ic32_loading.gif"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/gfx/ic32_loading.gif"))); // NOI18N
         jLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         cardPanel.add(jLabel5, "loadingCard");
 
@@ -228,7 +228,7 @@ public class WelcomePanel extends ServicePanel {
         jLabel3.setText("<html>Feed not available.<br/>Please check the url or your internet connection.");
         jLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gfx/ic_warning.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/gfx/ic_warning.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -238,7 +238,7 @@ public class WelcomePanel extends ServicePanel {
                 .addGap(2, 2, 2)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE))
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -246,7 +246,7 @@ public class WelcomePanel extends ServicePanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 303, Short.MAX_VALUE))
+                .addGap(0, 362, Short.MAX_VALUE))
         );
 
         cardPanel.add(jPanel4, "msgCard");
