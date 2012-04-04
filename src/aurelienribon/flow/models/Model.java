@@ -47,6 +47,14 @@ public class Model {
 		return name;
 	}
 
+	public String getName(String constraintName) {
+		return name + "-" + constraintName;
+	}
+
+	public String getHumanReadableName(String constraintName) {
+		return constraintName.equals(Model.EMPTY_CONSTRAINT_NAME) ? getName() : getName() + " - " + constraintName;
+	}
+
 	public List<String> getConstraintsNames() {
 		return Collections.unmodifiableList(constraintsNames);
 	}

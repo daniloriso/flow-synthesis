@@ -1,7 +1,7 @@
 package aurelienribon.flow.ui.modelstree;
 
 import aurelienribon.flow.models.ModelTuple;
-import aurelienribon.flow.services.ServiceProvider;
+import aurelienribon.flow.ServiceProvider;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import javax.swing.AbstractAction;

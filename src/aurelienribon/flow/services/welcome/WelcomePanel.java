@@ -1,6 +1,5 @@
 package aurelienribon.flow.services.welcome;
 
-import aurelienribon.flow.services.ServicePanel;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.Cursor;
@@ -14,6 +13,7 @@ import java.io.IOException;
 import java.net.*;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.ListCellRenderer;
 import javax.swing.SwingUtilities;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -27,7 +27,7 @@ import org.xml.sax.SAXException;
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
-public class WelcomePanel extends ServicePanel {
+public class WelcomePanel extends JPanel {
     public WelcomePanel() {
         initComponents();
 

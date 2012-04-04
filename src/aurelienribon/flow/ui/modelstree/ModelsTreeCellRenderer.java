@@ -1,7 +1,6 @@
 package aurelienribon.flow.ui.modelstree;
 
 import aurelienribon.flow.models.ModelTuple;
-import aurelienribon.flow.models.ModelUtils;
 import java.awt.Component;
 import java.io.File;
 import javax.swing.JLabel;
@@ -22,7 +21,7 @@ public class ModelsTreeCellRenderer extends DefaultTreeCellRenderer {
 
 		if (node.getUserObject() instanceof ModelTuple) {
 			ModelTuple mt = (ModelTuple) node.getUserObject();
-			label.setText(ModelUtils.getName(mt.getModel(), mt.getConstraintName(), " (", ")"));
+			label.setText(mt.getModel().getHumanReadableName(mt.getConstraintName()));
 
 			if (mt.getModel().isSourceValid(mt.getConstraintName()) && mt.getModel().isResultValid(mt.getConstraintName())) {
 				label.setIcon(Res.getImage("gfx/ic_project_green.png"));

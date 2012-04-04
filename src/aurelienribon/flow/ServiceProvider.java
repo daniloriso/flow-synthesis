@@ -1,10 +1,13 @@
-package aurelienribon.flow.services;
+package aurelienribon.flow;
 
+import aurelienribon.flow.contexts.ModelsContext;
+import aurelienribon.flow.contexts.UiContext;
 import aurelienribon.flow.services.edit.EditService;
 import aurelienribon.flow.services.graphplot.PlotGraphService;
 import aurelienribon.flow.services.setupapp.SetupAppService;
 import aurelienribon.flow.services.setupgraphlab.SetupGraphlabService;
 import aurelienribon.flow.services.welcome.WelcomeService;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,10 +29,15 @@ public class ServiceProvider {
 
 	private final Map<String, Service> services = new HashMap<String, Service>();
 	private final List<EventListener> listeners = new CopyOnWriteArrayList<EventListener>();
-	private final JFrame window;
+	private final ModelsContext modelsCtx;
+	private final UiContext uiCtx;
 
-	public ServiceProvider(JFrame window) {
-		this.window = window;
+	public ServiceProvider(JFrame window) throws IOException {
+		this.modelsCtx = new ModelsContext();
+		this.uiCtx = new UiContext(window);
+
+		modelsCtx.initilialize();
+		uiCtx.initilialize();
 
 		services.put(SETUP_APP, new SetupAppService());
 		services.put(SETUP_GRAPHLAB, new SetupGraphlabService());
@@ -56,7 +64,7 @@ public class ServiceProvider {
 		fireServiceCall(serviceName, service, input);
 
 		try {
-			ServiceContext ctx = new ServiceContext(input, this, window);
+			ServiceContext ctx = new ServiceContext(input, this, modelsCtx, uiCtx);
 			service.process(ctx);
 		} catch (ServiceExecutionException ex) {
 			fireServiceError(serviceName, service, ex);
@@ -83,7 +91,7 @@ public class ServiceProvider {
 				synchronize(new Runnable() {@Override public void run() {if (callback != null) callback.begin();}});
 
 				try {
-					ServiceContext ctx = new ServiceContext(input, ServiceProvider.this, window);
+					ServiceContext ctx = new ServiceContext(input, ServiceProvider.this, modelsCtx, uiCtx);
 					service.process(ctx);
 				} catch (ServiceExecutionException ex) {
 					fireServiceError(serviceName, service, ex);
@@ -97,6 +105,18 @@ public class ServiceProvider {
 
 		Thread th = new Thread(runnable, "Service - " + serviceName);
 		th.start();
+	}
+
+	// -------------------------------------------------------------------------
+	// Accessors
+	// -------------------------------------------------------------------------
+
+	public ModelsContext getModelsCtx() {
+		return modelsCtx;
+	}
+
+	public UiContext getUiCtx() {
+		return uiCtx;
 	}
 
 	// -------------------------------------------------------------------------

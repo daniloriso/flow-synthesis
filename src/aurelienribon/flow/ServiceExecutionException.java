@@ -1,4 +1,4 @@
-package aurelienribon.flow.services;
+package aurelienribon.flow;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/

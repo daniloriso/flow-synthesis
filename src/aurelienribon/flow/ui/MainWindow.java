@@ -1,12 +1,14 @@
 package aurelienribon.flow.ui;
 
-import aurelienribon.flow.services.Service;
-import aurelienribon.flow.services.ServiceExecutionException;
-import aurelienribon.flow.services.ServiceProvider;
+import aurelienribon.flow.Service;
+import aurelienribon.flow.ServiceExecutionException;
+import aurelienribon.flow.ServiceProvider;
 import aurelienribon.ui.components.AruiStyle;
 import aurelienribon.ui.css.Style;
-import aurelienribon.ui.css.StyleException;
 import aurelienribon.ui.css.swing.SwingStyle;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.IOException;
 import javax.swing.*;
 import res.Res;
 
@@ -15,11 +17,23 @@ import res.Res;
  */
 public class MainWindow extends javax.swing.JFrame {
 	private final Style style;
-	private final ServiceProvider services = new ServiceProvider(this);
+	private final ServiceProvider services;
 
     public MainWindow() {
         initComponents();
 
+		ServiceProvider sp = null;
+
+		try {
+			sp = new ServiceProvider(this);
+		} catch (IOException ex) {
+			String msg = "Something wrong happened during initialization of services.\n\n"
+				+ ex.getClass().getSimpleName() + " - " + ex.getMessage();
+			JOptionPane.showMessageDialog(getContentPane(), msg);
+			System.exit(-1);
+		}
+
+		services = sp;
 		services.addListener(serviceProviderEventListener);
 		services.launchSync(ServiceProvider.SETUP_APP, null);
 		services.launchSync(ServiceProvider.SHOW_WELCOME, null);
@@ -29,17 +43,17 @@ public class MainWindow extends javax.swing.JFrame {
 
 		SwingStyle.init();
 		AruiStyle.init();
-
 		Style.registerCssClasses(rootPanel, "#rootPanel");
 		Style.registerCssClasses(modelsPanel, "#modelsPanel");
 		Style.registerCssClasses(perfMonPanel, "#perfMonPanel");
+		style = new Style(Res.getUrl("css/style.css"));
+		Style.apply(getContentPane(), style);
 
-		try {
-			style = new Style(Res.getUrl("css/style.css"));
-			Style.apply(getContentPane(), style);
-		} catch (StyleException ex) {
-			throw new RuntimeException(ex);
-		}
+		addWindowListener(new WindowAdapter() {
+			@Override public void windowOpened(WindowEvent e) {
+				tabPanel.getModel().setSelection(0);
+			}
+		});
     }
 
 	private final ServiceProvider.EventListener serviceProviderEventListener = new ServiceProvider.EventListener() {
@@ -55,6 +69,7 @@ public class MainWindow extends javax.swing.JFrame {
 			tabPanel.getModel().setSelection(panel);
 		}
 	};
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

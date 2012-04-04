@@ -1,26 +1,18 @@
 package aurelienribon.flow.ui.modelstree;
 
 import aurelienribon.flow.models.Model;
-import aurelienribon.flow.services.ServiceProvider;
+import aurelienribon.flow.ServiceProvider;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import javax.swing.ToolTipManager;
 import org.apache.commons.io.FilenameUtils;
-import org.ini4j.Wini;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
 public class ModelsPanel extends javax.swing.JPanel {
-	private final List<Model> models = new ArrayList<Model>();
-	private File modelsDir;
-	private File resultsDir;
-	private File tempDir;
-	private File scriptFile;
 	private ServiceProvider services;
 
     public ModelsPanel() {
@@ -34,36 +26,14 @@ public class ModelsPanel extends javax.swing.JPanel {
 		modelsTree.setCellRenderer(new ModelsTreeCellRenderer());
 		ToolTipManager.sharedInstance().registerComponent(modelsTree);
 
-		initilialize();
 		reload();
 	}
 
-	private void initilialize() {
-		String modelsDirStr = "";
-		String resultsDirStr = "";
-		String tempDirStr = "";
-		String scriptFileStr = "";
-
-		try {
-			Wini ini = new Wini(new File("config.ini"));
-			modelsDirStr = ini.get("paths", "modelsDir");
-			resultsDirStr = ini.get("paths", "resultsDir");
-			tempDirStr = ini.get("paths", "tempDir");
-			scriptFileStr = ini.get("paths", "scriptFile");
-		} catch (IOException ex) {
-			System.err.println("ModelsPanel - Cannot read config.ini");
-		}
-
-		modelsDir = new File(modelsDirStr != null ? modelsDirStr : "");
-		resultsDir = new File(resultsDirStr != null ? resultsDirStr : "");
-		tempDir = new File(tempDirStr != null ? tempDirStr : "");
-		scriptFile = new File(scriptFileStr != null ? scriptFileStr : "");
-
-		if (!modelsDir.exists()) modelsDir.mkdirs();
-		if (!resultsDir.exists()) resultsDir.mkdirs();
-	}
-
 	private void load() {
+		File modelsDir = services.getModelsCtx().getModelsDir();
+		File resultsDir = services.getModelsCtx().getResultsDir();
+		List<Model> models = services.getModelsCtx().getModelsUnsafe();
+
 		for (File file : modelsDir.listFiles()) {
 			if (FilenameUtils.getExtension(file.getName()).equals("m")) {
 				String name = FilenameUtils.getBaseName(file.getName());
@@ -79,9 +49,9 @@ public class ModelsPanel extends javax.swing.JPanel {
 	}
 
 	private void reload() {
-		models.clear();
+		services.getModelsCtx().getModelsUnsafe().clear();
 		load();
-		modelsTree.build(models);
+		modelsTree.build(services.getModelsCtx().getModels());
 	}
 
 	// -------------------------------------------------------------------------

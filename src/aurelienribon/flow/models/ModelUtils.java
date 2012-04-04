@@ -35,19 +35,7 @@ public class ModelUtils {
 		FileUtils.deleteQuietly(model.getGraphFile(constraintName));
 	}
 
-	public static String getName(Model model, String constraintName, String prefix, String postfix) {
-		return constraintName.equals(Model.EMPTY_CONSTRAINT_NAME)
-			? model.getName()
-			: model.getName() + prefix + constraintName + postfix;
-	}
-
-	public static boolean isResultPresent(Model model, String constraintName) {
-		return model.getVhdlFile(constraintName).exists()
-			|| model.getMetaFile(constraintName).exists()
-			|| model.getGraphFile(constraintName).exists();
-	}
-
-	public static Graph getGraph(Model model, String constraintName) {
+	public static Graph deserializeGraph(Model model, String constraintName) {
 		if (!model.getGraphFile(constraintName).exists()) return null;
 
 		try {

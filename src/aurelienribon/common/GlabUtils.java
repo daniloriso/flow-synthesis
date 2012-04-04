@@ -35,7 +35,6 @@ public class GlabUtils {
 	}
 
 	public static void setCallback(Callback callback) {
-		if (!isInitialized) return;
 		GlabUtils.callback = callback;
 	}
 
@@ -43,7 +42,7 @@ public class GlabUtils {
 		if (!isInitialized) return;
 		String command = getCommand(cmd, args);
 
-		callback.commandCalled(command);
+		if (callback != null) callback.commandCalled(command);
 		InterpreterResult cmdRes = getEvaluator().CommandExecute(command);
 
 		String text = "";
@@ -51,20 +50,13 @@ public class GlabUtils {
 		text = text.trim();
 
 		Result result = new Result(command, text, cmdRes.isErrorMessage());
-		callback.commandReturned(result);
+		if (callback != null) callback.commandReturned(result);
 	}
 
 	public static void executeSilently(String cmd, String... args) {
 		if (!isInitialized) return;
 		String command = getCommand(cmd, args);
-
-		InterpreterResult cmdRes = getEvaluator().CommandExecute(command);
-
-		String text = "";
-		for (String msg : cmdRes.getMessages()) text += msg + "\n";
-		text = text.trim();
-
-		Result result = new Result(command, text, cmdRes.isErrorMessage());
+		getEvaluator().CommandExecute(command);
 	}
 
 	public static void executeAsync(String cmd, String... args) {
@@ -76,7 +68,7 @@ public class GlabUtils {
 				lock.lock();
 
 				try {
-					callback.commandCalled(command);
+					if (callback != null) callback.commandCalled(command);
 					InterpreterResult cmdRes = getEvaluator().CommandExecute(command);
 
 					String text = "";
@@ -84,7 +76,7 @@ public class GlabUtils {
 					text = text.trim();
 
 					Result result = new Result(command, text, cmdRes.isErrorMessage());
-					callback.commandReturned(result);
+					if (callback != null) callback.commandReturned(result);
 
 				} finally {
 					lock.unlock();

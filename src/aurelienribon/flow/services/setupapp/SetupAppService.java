@@ -1,13 +1,14 @@
 package aurelienribon.flow.services.setupapp;
 
-import aurelienribon.flow.services.Service;
-import aurelienribon.flow.services.ServiceContext;
-import aurelienribon.flow.services.ServiceExecutionException;
+import aurelienribon.flow.Service;
+import aurelienribon.flow.ServiceContext;
+import aurelienribon.flow.ServiceExecutionException;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import org.apache.commons.io.FileUtils;
 import org.ini4j.Wini;
+import res.Res;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
@@ -22,7 +23,7 @@ public class SetupAppService extends Service {
 				Wini ini = new Wini(configFile);
 				setupProxy(ini);
 			} else {
-				URL url = getClass().getResource("config.ini");
+				URL url = Res.getUrl("ini/config.ini");
 				FileUtils.copyURLToFile(url, configFile);
 			}
 		} catch (IOException ex) {

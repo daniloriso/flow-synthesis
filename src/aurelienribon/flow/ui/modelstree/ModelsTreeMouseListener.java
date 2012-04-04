@@ -1,6 +1,6 @@
 package aurelienribon.flow.ui.modelstree;
 
-import aurelienribon.flow.services.ServiceProvider;
+import aurelienribon.flow.ServiceProvider;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;

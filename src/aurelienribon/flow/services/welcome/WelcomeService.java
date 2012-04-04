@@ -1,8 +1,8 @@
 package aurelienribon.flow.services.welcome;
 
-import aurelienribon.flow.services.Service;
-import aurelienribon.flow.services.ServiceContext;
-import aurelienribon.flow.services.ServiceExecutionException;
+import aurelienribon.flow.Service;
+import aurelienribon.flow.ServiceContext;
+import aurelienribon.flow.ServiceExecutionException;
 import res.Res;
 
 /**

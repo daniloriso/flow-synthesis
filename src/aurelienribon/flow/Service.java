@@ -1,4 +1,4 @@
-package aurelienribon.flow.services;
+package aurelienribon.flow;
 
 import javax.swing.Icon;
 import javax.swing.JPanel;
