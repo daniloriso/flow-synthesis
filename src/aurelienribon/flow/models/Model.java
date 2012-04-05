@@ -11,11 +11,11 @@ public class Model {
 
 	private final String name;
 	private final File modelFile;
-	private final List<String> constraintsNames = new ArrayList<String>();
-	private final Map<String, File> constraintsFilesMap = new HashMap<String, File>();
-	private final Map<String, File> vhdlFilesMap = new HashMap<String, File>();
-	private final Map<String, File> metaFilesMap = new HashMap<String, File>();
-	private final Map<String, File> graphsFilesMap = new HashMap<String, File>();
+	private final List<String> constraintsNames = new ArrayList<>();
+	private final Map<String, File> constraintsFilesMap = new HashMap<>();
+	private final Map<String, File> vhdlFilesMap = new HashMap<>();
+	private final Map<String, File> metaFilesMap = new HashMap<>();
+	private final Map<String, File> graphsFilesMap = new HashMap<>();
 
 	public Model(String name, File modelsDir, File resultsDir) {
 		assert modelsDir.isDirectory();

@@ -2,6 +2,7 @@ package aurelienribon.flow;
 
 import aurelienribon.flow.contexts.ModelsContext;
 import aurelienribon.flow.contexts.UiContext;
+import aurelienribon.flow.services.compile.CompileService;
 import aurelienribon.flow.services.edit.EditService;
 import aurelienribon.flow.services.graphplot.PlotGraphService;
 import aurelienribon.flow.services.setupapp.SetupAppService;
@@ -15,7 +16,6 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
@@ -26,9 +26,10 @@ public class ServiceProvider {
 	public static final String SHOW_WELCOME = "SHOW_WELCOME";
 	public static final String EDIT = "EDIT";
 	public static final String PLOT_GRAPH = "PLOT_GRAPH";
+	public static final String COMPILE = "COMPILE";
 
-	private final Map<String, Service> services = new HashMap<String, Service>();
-	private final List<EventListener> listeners = new CopyOnWriteArrayList<EventListener>();
+	private final Map<String, Service> services = new HashMap<>();
+	private final List<EventListener> listeners = new CopyOnWriteArrayList<>();
 	private final ModelsContext modelsCtx;
 	private final UiContext uiCtx;
 
@@ -44,6 +45,7 @@ public class ServiceProvider {
 		services.put(SHOW_WELCOME, new WelcomeService());
 		services.put(EDIT, new EditService());
 		services.put(PLOT_GRAPH, new PlotGraphService());
+		services.put(COMPILE, new CompileService());
 	}
 
 	// -------------------------------------------------------------------------
@@ -88,7 +90,7 @@ public class ServiceProvider {
 		Runnable runnable = new Runnable() {
 			@Override public void run() {
 				fireServiceCall(serviceName, service, input);
-				synchronize(new Runnable() {@Override public void run() {if (callback != null) callback.begin();}});
+				if (callback != null) callback.begin();
 
 				try {
 					ServiceContext ctx = new ServiceContext(input, ServiceProvider.this, modelsCtx, uiCtx);
@@ -97,7 +99,7 @@ public class ServiceProvider {
 					fireServiceError(serviceName, service, ex);
 				}
 
-				synchronize(new Runnable() {@Override public void run() {if (callback != null) callback.complete();}});
+				if (callback != null) callback.complete();
 				fireServiceComplete(serviceName, service);
 				service.callback = null;
 			}
@@ -147,64 +149,26 @@ public class ServiceProvider {
 	}
 
 	private void fireServiceCall(final String serviceName, final Service service, final Object input) {
-		synchronize(new Runnable() {
-			@Override public void run() {
-				for (EventListener listener : listeners)
-					listener.serviceCall(serviceName, service, input);
-			}
-		});
+		for (EventListener listener : listeners) listener.serviceCall(serviceName, service, input);
 	}
 
 	private void fireServiceComplete(final String serviceName, final Service service) {
-		synchronize(new Runnable() {
-			@Override public void run() {
-				for (EventListener listener : listeners)
-					listener.serviceComplete(serviceName, service);
-			}
-		});
+		for (EventListener listener : listeners) listener.serviceComplete(serviceName, service);
 	}
 
 	private void fireServiceProgressUpdate(final String serviceName, final Service service, final float progress, final String description) {
-		synchronize(new Runnable() {
-			@Override public void run() {
-				for (EventListener listener : listeners)
-					listener.serviceProgressUpdate(serviceName, service, progress, description);
-			}
-		});
+		for (EventListener listener : listeners) listener.serviceProgressUpdate(serviceName, service, progress, description);
 	}
 
 	private void fireServiceLog(final String serviceName, final Service service, final String msg) {
-		synchronize(new Runnable() {
-			@Override public void run() {
-				for (EventListener listener : listeners)
-					listener.serviceLog(serviceName, service, msg);
-			}
-		});
+		for (EventListener listener : listeners) listener.serviceLog(serviceName, service, msg);
 	}
 
 	private void fireServiceError(final String serviceName, final Service service, final ServiceExecutionException ex) {
-		synchronize(new Runnable() {
-			@Override public void run() {
-				for (EventListener listener : listeners)
-					listener.serviceError(serviceName, service, ex);
-			}
-		});
+		for (EventListener listener : listeners) listener.serviceError(serviceName, service, ex);
 	}
 
 	private void fireServiceShow(final String serviceName, final Service service, final String title, final JPanel panel, final Icon icon) {
-		synchronize(new Runnable() {
-			@Override public void run() {
-				for (EventListener listener : listeners)
-					listener.serviceShow(serviceName, service, title, panel, icon);
-			}
-		});
-	}
-
-	// -------------------------------------------------------------------------
-	// Helpers
-	// -------------------------------------------------------------------------
-
-	private void synchronize(Runnable runnable) {
-		SwingUtilities.invokeLater(runnable);
+		for (EventListener listener : listeners) listener.serviceShow(serviceName, service, title, panel, icon);
 	}
 }

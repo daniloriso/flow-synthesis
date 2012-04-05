@@ -16,7 +16,7 @@ public class ModelsTree extends JTree {
 		setRootVisible(false);
 		setShowsRootHandles(true);
 	}
-	
+
 	public void build(List<Model> models) {
 		DefaultMutableTreeNode root = new DefaultMutableTreeNode();
 
@@ -24,12 +24,12 @@ public class ModelsTree extends JTree {
 			for (String constraintName : model.getConstraintsNames()) {
 				DefaultMutableTreeNode modelNode = new DefaultMutableTreeNode(new ModelTuple(model, constraintName));
 				root.add(modelNode);
-				
+
 				File[] files = new File[] {
 					model.getModelFile(), model.getConstraintsFile(constraintName),
 					model.getVhdlFile(constraintName), model.getMetaFile(constraintName)
 				};
-				
+
 				for (File file : files) if (file.exists()) modelNode.add(new DefaultMutableTreeNode(file));
 			}
 		}

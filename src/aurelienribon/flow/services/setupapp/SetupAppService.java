@@ -27,6 +27,7 @@ public class SetupAppService extends Service {
 				FileUtils.copyURLToFile(url, configFile);
 			}
 		} catch (IOException ex) {
+			exit(ex);
 		}
 	}
 

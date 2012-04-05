@@ -1,17 +1,16 @@
-setenv(DESIGN_LATENCY = @{LATENCY})
-setenv(CST_ALLOCATION = @{ALLOC_FILENAME})
-setenv(CST_DATE = @{TIMINGS_FILENAME})
-setenv(CST_PORTS = @{PORTS_FILENAME})
+setenv(DESIGN_LATENCY = @{latency})
+setenv(CST_ALLOCATION = @{alloc_filepath})
+setenv(CST_DATE = @{timings_filepath})
+setenv(CST_PORTS = @{ports_filepath})
 setenv(HARDWARE_LIB = $LIBRARY/SIGNED_CYCLONE3.xml2)
 
-MatlabAnalyser(models/@{NAME}.m)
+MatlabAnalyser(@{model_filepath})
 
 hls_LoadIOPorts($CST_PORTS)
 hls_LoadInputDate($CST_DATE)
 hls_OptimizeGraph($RESSOURCES/arithmetic/reduce_computation.xml)
 dyn_SetConstantBitwise(16,1)
 
-contracts-debug-toggle
 contracts-init
 contracts-tag
 contracts-prepare
@@ -29,4 +28,4 @@ hls_AnalyzeScheduling()
 
 contracts-bind
 
-hls_GenDynamicMooreArchitecture2(results/@{NAME}.vhd, $HARDWARE_LIB)
+hls_GenDynamicMooreArchitecture2(@{model_vhdl_filepath}, $HARDWARE_LIB)

@@ -1,27 +1,24 @@
-package aurelienribon.flow.services.setupgraphlab;
+package aurelienribon.flow.ui.console;
 
 /**
  * @author Aurelien Ribon | http://www.aurelienribon.com/
  */
-public class GlabView extends javax.swing.JPanel {
-    public GlabView() {
+public class ConsolePanel extends javax.swing.JPanel {
+    public ConsolePanel() {
         initComponents();
     }
 
-	public void appendCommand(String cmd) {
-		if (!consoleArea.getText().isEmpty()) consoleArea.append("\n\n");
-		consoleArea.append("> " + cmd);
-		consoleArea.setCaretPosition(consoleArea.getText().length());
-	}
-
-	public void appendAnswer(String txt) {
-		if (!consoleArea.getText().isEmpty()) consoleArea.append("\n\n");
+	public void appendText(String txt) {
 		consoleArea.append(txt);
 		consoleArea.setCaretPosition(consoleArea.getText().length());
 	}
 
-	public void clear() {
+	public void clearText() {
 		consoleArea.setText("");
+	}
+
+	public String getText() {
+		return consoleArea.getText();
 	}
 
     @SuppressWarnings("unchecked")

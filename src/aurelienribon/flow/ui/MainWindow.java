@@ -1,13 +1,14 @@
 package aurelienribon.flow.ui;
 
+import aurelienribon.common.GlabUtils;
+import aurelienribon.common.GlabUtils.Result;
 import aurelienribon.flow.Service;
 import aurelienribon.flow.ServiceExecutionException;
 import aurelienribon.flow.ServiceProvider;
+import aurelienribon.flow.ui.console.ConsolePanel;
 import aurelienribon.ui.components.AruiStyle;
 import aurelienribon.ui.css.Style;
 import aurelienribon.ui.css.swing.SwingStyle;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 import javax.swing.*;
 import res.Res;
@@ -18,6 +19,7 @@ import res.Res;
 public class MainWindow extends javax.swing.JFrame {
 	private final Style style;
 	private final ServiceProvider services;
+	private final ConsolePanel console = new ConsolePanel();
 
     public MainWindow() {
         initComponents();
@@ -35,9 +37,8 @@ public class MainWindow extends javax.swing.JFrame {
 
 		services = sp;
 		services.addListener(serviceProviderEventListener);
-		services.launchSync(ServiceProvider.SETUP_APP, null);
-		services.launchSync(ServiceProvider.SHOW_WELCOME, null);
-		services.launchAsync(ServiceProvider.SETUP_GRAPHLAB, null, null);
+
+		initConsole();
 
 		modelsPanel.setup(services);
 
@@ -49,19 +50,57 @@ public class MainWindow extends javax.swing.JFrame {
 		style = new Style(Res.getUrl("css/style.css"));
 		Style.apply(getContentPane(), style);
 
-		addWindowListener(new WindowAdapter() {
-			@Override public void windowOpened(WindowEvent e) {
-				tabPanel.getModel().setSelection(0);
-			}
-		});
+		services.launchSync(ServiceProvider.SETUP_APP, null);
+		services.launchSync(ServiceProvider.SHOW_WELCOME, null);
+		services.launchAsync(ServiceProvider.SETUP_GRAPHLAB, null, null);
     }
 
+	private void initConsole() {
+		tabPanel.getModel().add(console, "Console", Res.getImage("gfx/ic_terminal.png"), false);
+
+		GlabUtils.setCallback(new GlabUtils.Callback() {
+			@Override public void commandCalled(String cmd) {
+				consoleNewLines();
+				console.appendText("> " + cmd);
+			}
+
+			@Override public void commandReturned(Result result) {
+				consoleNewLines();
+				console.appendText(result.text);
+			}
+		});
+	}
+
+	private void consoleNewLines() {
+		String txt = console.getText();
+		if (!txt.isEmpty() && !txt.endsWith("\n\n") && txt.endsWith("\n")) console.appendText("\n");
+		else if (!txt.isEmpty() && !txt.endsWith("\n\n") && !txt.endsWith("\n")) console.appendText("\n\n");
+	}
+
 	private final ServiceProvider.EventListener serviceProviderEventListener = new ServiceProvider.EventListener() {
-		@Override public void serviceCall(String serviceName, Service service, Object input) {}
-		@Override public void serviceComplete(String serviceName, Service service) {}
-		@Override public void serviceProgressUpdate(String serviceName, Service service, float progress, String description) {}
-		@Override public void serviceLog(String serviceName, Service service, String msg) {}
-		@Override public void serviceError(String serviceName, Service service, ServiceExecutionException ex) {}
+		private boolean isNewCall = false;
+
+		@Override public void serviceCall(String serviceName, Service service, Object input) {
+			isNewCall = true;
+		}
+
+		@Override public void serviceComplete(String serviceName, Service service) {
+		}
+
+		@Override public void serviceProgressUpdate(String serviceName, Service service, float progress, String description) {
+		}
+
+		@Override public void serviceLog(String serviceName, Service service, String msg) {
+			if (isNewCall) consoleNewLines();
+			isNewCall = false;
+			console.appendText(msg);
+		}
+
+		@Override public void serviceError(String serviceName, Service service, ServiceExecutionException ex) {
+			console.appendText("[error] " + ex.getCause().getClass().getSimpleName() + "\n");
+			console.appendText("[error] " + ex.getMessage());
+		}
+
 		@Override public void serviceShow(String serviceName, Service service, String title, JPanel panel, Icon icon) {
 			Style.registerCssClasses(panel, ".servicePanel");
 			Style.apply(panel, style);

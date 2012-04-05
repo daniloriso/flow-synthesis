@@ -1,6 +1,7 @@
 package aurelienribon.flow.contexts;
 
 import aurelienribon.flow.models.Model;
+import aurelienribon.flow.models.ModelTuple;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -50,5 +51,17 @@ public class ModelsContext {
 
 	public List<Model> getModelsUnsafe() {
 		return models;
+	}
+
+	public ModelTuple getModel(String name) {
+		for (Model model : models) {
+			for (String constraintName : model.getConstraintsNames()) {
+				if (model.getName(constraintName).equals(name)) {
+					return new ModelTuple(model, constraintName);
+				}
+			}
+		}
+
+		return null;
 	}
 }

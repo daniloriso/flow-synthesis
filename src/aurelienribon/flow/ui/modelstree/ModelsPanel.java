@@ -26,10 +26,12 @@ public class ModelsPanel extends javax.swing.JPanel {
 		modelsTree.setCellRenderer(new ModelsTreeCellRenderer());
 		ToolTipManager.sharedInstance().registerComponent(modelsTree);
 
-		reload();
+		services.getModelsCtx().getModelsUnsafe().clear();
+		loadModels();
+		modelsTree.build(services.getModelsCtx().getModels());
 	}
 
-	private void load() {
+	private void loadModels() {
 		File modelsDir = services.getModelsCtx().getModelsDir();
 		File resultsDir = services.getModelsCtx().getResultsDir();
 		List<Model> models = services.getModelsCtx().getModelsUnsafe();
@@ -46,12 +48,6 @@ public class ModelsPanel extends javax.swing.JPanel {
 				return o1.getName().compareToIgnoreCase(o2.getName());
 			}
 		});
-	}
-
-	private void reload() {
-		services.getModelsCtx().getModelsUnsafe().clear();
-		load();
-		modelsTree.build(services.getModelsCtx().getModels());
 	}
 
 	// -------------------------------------------------------------------------

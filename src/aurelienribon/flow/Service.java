@@ -22,6 +22,18 @@ public abstract class Service {
 		callback.logRequested(msg);
 	}
 
+	protected void exit(String msg) throws ServiceExecutionException {
+		throw new ServiceExecutionException(msg);
+	}
+
+	protected void exit(Throwable ex) throws ServiceExecutionException {
+		throw new ServiceExecutionException(null, ex);
+	}
+
+	protected void exit(String msg, Throwable ex) throws ServiceExecutionException {
+		throw new ServiceExecutionException(msg, ex);
+	}
+
 	protected void progress(float progress, String description) {
 		assert callback != null;
 		callback.progressUpdateRequested(progress, description);
