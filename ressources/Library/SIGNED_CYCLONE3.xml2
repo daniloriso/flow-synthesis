@@ -322,5 +322,23 @@
 			<output	offset="0" />
 		</offsets>
     </Element>
+	
+	<Element Name    = ">,GT">
+		<attr opr_name	  = "GT" />
+		<attr Type		  = "component" />
+		<attr code		  = "GT_DYNAMIC" />
+		<attr Delay		  = "1" />
+		<attr Area		  = "[SPLINE][0 4 8 12 16 20 24 28 32 36 40 48 64 96 128][0 4 8 12 16 20 24 28 32 36 40 48 64 96 128]" />
+		<attr Latency     = "[SPLINE][0 4 8 12 16 20 24 28 32 36 40 48 64 96 128][0 4 4 4 4 4 4 4 4.373 4.852 5.042 6.284 6.671 8.562 10.461]" />
+		<attr Pipeline	  = "0" />
+		<attr variable_bitwidth	  = "true" />
+		<attr Commutativity = "0" />
+		<attr Consumption	  = "[SPLINE][0 4 8 12 16 20 24 28 32 36 40 48 64 96 128][0.0 2.4 4.8 7.2 9.6 12.0 14.4 16.8 19.2 21.6 24.0 28.8 38.4 57.7 76.9]" />
+		<offsets>
+			<input	offset="0" />
+			<input	offset="0" />
+			<output	offset="0" />
+		</offsets>
+    </Element>
     
 </Library>

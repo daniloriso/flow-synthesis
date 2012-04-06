@@ -35,8 +35,7 @@ public class WelcomePanel extends JPanel {
 			@Override public void mouseClicked(MouseEvent e) {
 				if (!Desktop.isDesktopSupported()) return;
 				try {Desktop.getDesktop().browse(new URI("http://www.aurelienribon.com"));}
-				catch (URISyntaxException ex) {}
-				catch (IOException ex) {}
+				catch (URISyntaxException | IOException ex) {}
 			}
 
 			@Override public void mouseEntered(MouseEvent e) {setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));}
@@ -65,7 +64,7 @@ public class WelcomePanel extends JPanel {
 				SwingUtilities.invokeLater(new Runnable() {@Override public void run() {cl.show(cardPanel, "loadingCard");}});
 
 				try {
-					DefaultListModel<UpdateEntry> model = new DefaultListModel<UpdateEntry>();
+					DefaultListModel<UpdateEntry> model = new DefaultListModel<>();
 
 					HttpURLConnection connection = (HttpURLConnection) new URL(feedField.getText()).openConnection();
 					connection.setConnectTimeout(1000);

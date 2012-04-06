@@ -1,5 +1,6 @@
 package aurelienribon.flow.services.edit;
 
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -23,7 +24,23 @@ public class EditView extends javax.swing.JPanel {
 					FileUtils.writeStringToFile(file, editArea.getText());
 				} catch (IOException ex) {
 					String msg = "The file cannot be saved.";
-					JOptionPane.showMessageDialog(EditView.this, msg, "Warning", JOptionPane.WARNING_MESSAGE);
+					JOptionPane.showMessageDialog(EditView.this, msg);
+				}
+			}
+		});
+
+		openBtn.addActionListener(new ActionListener() {
+			@Override public void actionPerformed(ActionEvent e) {
+				if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.OPEN)) {
+					try {
+						Desktop.getDesktop().open(file);
+					} catch (IOException ex) {
+						String msg = "There is no default editor for file " + file.getName();
+						JOptionPane.showMessageDialog(EditView.this, msg);
+					}
+				} else {
+					String msg = "Desktop operations are not supported.";
+					JOptionPane.showMessageDialog(EditView.this, msg);
 				}
 			}
 		});
@@ -38,7 +55,7 @@ public class EditView extends javax.swing.JPanel {
 		} catch (IOException ex) {
 			filenameLabel.setText("> " + file.getAbsolutePath());
 			String msg = "The file cannot be read.";
-			JOptionPane.showMessageDialog(EditView.this, msg, "Warning", JOptionPane.WARNING_MESSAGE);
+			JOptionPane.showMessageDialog(EditView.this, msg);
 		}
 	}
 
@@ -50,6 +67,7 @@ public class EditView extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
         saveBtn = new javax.swing.JButton();
+        openBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         editArea = new javax.swing.JTextArea();
 
@@ -68,6 +86,12 @@ public class EditView extends javax.swing.JPanel {
         saveBtn.setFocusable(false);
         jToolBar1.add(saveBtn);
 
+        openBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/res/gfx/ic_edit.png"))); // NOI18N
+        openBtn.setText("Open in default editor");
+        openBtn.setFocusable(false);
+        openBtn.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(openBtn);
+
         jPanel1.add(jToolBar1, java.awt.BorderLayout.PAGE_START);
 
         jScrollPane1.setBorder(null);
@@ -82,12 +106,14 @@ public class EditView extends javax.swing.JPanel {
 
         add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea editArea;
     private javax.swing.JLabel filenameLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JButton openBtn;
     private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -97,8 +97,12 @@ public class MainWindow extends javax.swing.JFrame {
 		}
 
 		@Override public void serviceError(String serviceName, Service service, ServiceExecutionException ex) {
-			console.appendText("[error] " + ex.getCause().getClass().getSimpleName() + "\n");
+			consoleNewLines();
 			console.appendText("[error] " + ex.getMessage());
+			if (ex.getCause() != null) {
+				console.appendText("\n[error] " + ex.getCause().getClass().getSimpleName());
+				console.appendText("\n[error] " + ex.getCause().getMessage());
+			}
 		}
 
 		@Override public void serviceShow(String serviceName, Service service, String title, JPanel panel, Icon icon) {

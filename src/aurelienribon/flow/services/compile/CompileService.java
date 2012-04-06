@@ -45,10 +45,10 @@ public class CompileService extends Service {
 		String ports = ModelUtils.getConstraint(model.getConstraintsFile(constraintName), "ports");
 		String timings = ModelUtils.getConstraint(model.getConstraintsFile(constraintName), "timings");
 
-		if (latency == null) exit("\n\nCould not find 'latency' constraint.");
-		if (alloc == null) exit("\n\nCould not find 'alloc' constraint.");
-		if (ports == null) exit("\n\nCould not find 'ports' constraint.");
-		if (timings == null) exit("\n\nCould not find 'timings' constraint.");
+		if (latency == null) exit("Could not find 'latency' constraint.");
+		if (alloc == null) exit("Could not find 'alloc' constraint.");
+		if (ports == null) exit("Could not find 'ports' constraint.");
+		if (timings == null) exit("Could not find 'timings' constraint.");
 
 		File tmpAllocFile = new File("_tmp", "tmp.alloc");
 		File tmpPortsFile = new File("_tmp", "tmp.ports");
@@ -82,7 +82,7 @@ public class CompileService extends Service {
 
 		} catch (IOException ex) {
 			ModelUtils.clearResult(model, constraintName);
-			exit("\n\nSomething went wrong during compilation of " + model.getHumanReadableName(constraintName), ex);
+			exit("Something went wrong during compilation of " + model.getHumanReadableName(constraintName), ex);
 		}
 	}
 

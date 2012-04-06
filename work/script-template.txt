@@ -13,8 +13,6 @@ dyn_SetConstantBitwise(16,1)
 
 contracts-init
 contracts-tag
-contracts-prepare
-contracts-pull
 
 hls_LoadLibrary($HARDWARE_LIB)
 hls_FactorizeIdenticalComputations($HARDWARE_LIB)
@@ -25,7 +23,5 @@ hls_AllocationForceDirected($CST_ALLOCATION)
 hls_ComplexSchedule($CST_ALLOCATION, $HARDWARE_LIB, REGISTER, NORMAL_EFFORT)
 hls_ComputeDataLifeTime()
 hls_AnalyzeScheduling()
-
-contracts-bind
 
 hls_GenDynamicMooreArchitecture2(@{model_vhdl_filepath}, $HARDWARE_LIB)

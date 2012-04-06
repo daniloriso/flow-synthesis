@@ -1,3 +1,47 @@
+LIBRARY IEEE;
+use IEEE.std_logic_1164.all;
+use IEEE.numeric_std.all;
+library work;
+
+ENTITY GT_DYNAMIC IS
+	GENERIC(
+		C_SIGNED          : NATURAL := 0;
+		INPUT_1_WIDTH     : NATURAL := 8;
+		INPUT_2_WIDTH     : NATURAL := 8;
+		OUTPUT_1_WIDTH    : NATURAL := 1
+	);
+	PORT( 
+		INPUT_1  : IN  STD_LOGIC_VECTOR(INPUT_1_WIDTH-1  DOWNTO 0);
+		INPUT_2  : IN  STD_LOGIC_VECTOR(INPUT_2_WIDTH-1  DOWNTO 0);
+		OUTPUT_1 : OUT STD_LOGIC
+	);
+END;
+
+ARCHITECTURE arch OF GT_DYNAMIC IS
+BEGIN
+	SIG:  IF C_SIGNED = 0 GENERATE
+	PROCESS (INPUT_1, INPUT_2)
+	BEGIN
+		if (SIGNED(INPUT_1) > SIGNED(INPUT_2) then
+			OUTPUT_1 <= '1';
+		else
+			OUTPUT_1 <= '0';
+		end if;
+	END PROCESS;
+	END GENERATE SIG;
+
+	SIG:  IF C_SIGNED = 1 GENERATE
+	PROCESS (INPUT_1, INPUT_2)
+	BEGIN
+		if (UNSIGNED(INPUT_1) > UNSIGNED(INPUT_2) then
+			OUTPUT_1 <= '1';
+		else
+			OUTPUT_1 <= '0';
+		end if;
+	END PROCESS;
+	END GENERATE SIG;
+END;
+
 --####################################################################################################
 --#
 --#  ADDER COMPONENT WITH VARIABLE INPUTS AND OUTPUT BITWIDTH
